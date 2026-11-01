@@ -222,56 +222,21 @@ hr {
 /*
  * Kanso Matcha — Typography
  *
- * Minimal-inspired adaptive typography system.
- *
- * Goals:
- * - No bundled font files.
- * - Respect Obsidian's Appearance > Font size setting.
- * - Use one adaptive base size for note content.
- * - Derive code, table, footnote, and tag sizes from that base.
- * - Keep headings simple and scalable.
+ * Minimal-inspired: use Obsidian's default font variables, no bundled fonts,
+ * no font-family overrides. One adaptive base size for note content.
  */
 :root {
   /* ------------------------------------------------------------------
-     Font stacks
+     Font families — follow Obsidian's defaults (Minimal-style).
      ------------------------------------------------------------------ */
-  /* Theme-owned default stacks. */
-  --km-font-interface-theme:
-    system-ui,
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    Roboto,
-    "Helvetica Neue",
-    Arial,
-    sans-serif;
-  --km-font-text-theme:
-    Georgia,
-    "Times New Roman",
-    "Noto Serif",
-    serif;
-  --km-font-monospace-theme:
-    ui-monospace,
-    SFMono-Regular,
-    Menlo,
-    Consolas,
-    "Liberation Mono",
-    monospace;
-  /* Respect Obsidian/user/style-settings overrides when available. */
-  --font-interface:
-    var(--font-interface-override, var(--km-font-interface-theme));
-  --font-text:
-    var(--font-text-override, var(--km-font-text-theme));
-  --font-monospace:
-    var(--font-monospace-override, var(--km-font-monospace-theme));
   /*
-    Editor font usually follows the note text font unless the user
-    explicitly overrides the editor font.
+    Editor font follows the note text font unless the user explicitly
+    overrides the editor font (Minimal-style fallback chain).
   */
   --font-editor:
     var(
       --font-editor-override,
-      var(--font-text-override, var(--km-font-text-theme))
+      var(--font-text-override, var(--font-text))
     );
   /* Semantic aliases for internal Kanso Matcha use. */
   --km-font-interface: var(--font-interface);
@@ -279,32 +244,29 @@ hr {
   --km-font-mono: var(--font-monospace);
   --km-font-editor: var(--font-editor);
   /* ------------------------------------------------------------------
+     Heading / inline-title fonts (all use the text face).
+     ------------------------------------------------------------------ */
+  --inline-title-font: var(--font-text);
+  --h1-font: var(--font-text);
+  --h2-font: var(--font-text);
+  --h3-font: var(--font-text);
+  --h4-font: var(--font-text);
+  --h5-font: var(--font-text);
+  --h6-font: var(--font-text);
+  /* ------------------------------------------------------------------
      Adaptive font sizes
      ------------------------------------------------------------------ */
-  /*
-    This is the important part.
-
-    Obsidian's Appearance > Font size setting controls --font-text-size.
-    We use that as the single source of truth for note content.
-  */
   --km-font-size-normal: var(--font-text-size, 16px);
-  /* Derived sizes. */
   --km-font-size-small: calc(var(--km-font-size-normal) * 0.875);
   --km-font-size-smaller: calc(var(--km-font-size-normal) * 0.8125);
   --km-font-size-code: calc(var(--km-font-size-normal) * 0.9);
   /* ------------------------------------------------------------------
      Obsidian-facing typography variables
      ------------------------------------------------------------------ */
-  /*
-    Do not force --font-text-size here.
-    Let Obsidian's user setting control it.
-  */
   --line-height-normal: 1.6;
   --line-height-tight: 1.3;
   --heading-spacing: 1.75em;
   --p-spacing: 1.25em;
-  /* Heading scale.
-     More editorial than Minimal, but still restrained. */
   --h1-size: 1.6em;
   --h2-size: 1.35em;
   --h3-size: 1.18em;
@@ -323,42 +285,24 @@ hr {
   --h4-weight: 500;
   --h5-weight: 500;
   --h6-weight: 400;
-  /* Inline title. */
-  --inline-title-font: var(--font-text);
   --inline-title-size: 1.75em;
   --inline-title-line-height: 1.2;
   --inline-title-weight: 600;
-  /* Heading font families. */
-  --h1-font: var(--font-text);
-  --h2-font: var(--font-text);
-  --h3-font: var(--font-text);
-  --h4-font: var(--font-text);
-  --h5-font: var(--font-text);
-  --h6-font: var(--font-text);
-  /* Component sizes. */
   --code-size: 0.9em;
   --table-text-size: 0.9em;
   --footnote-size: 0.85em;
   --tag-size: 0.85em;
-  /* UI sizes (fixed px). */
   --font-ui-smaller: 12px;
   --font-ui-small: 13px;
   --font-ui-medium: 15px;
   --font-ui-large: 20px;
-  /* Content width. */
   --km-content-width: 68ch;
-  /* ------------------------------------------------------------------
-     Remove duplicate legacy heading variables if not used elsewhere.
-     If something else depends on them, keep them but map them to the
-     new system instead of defining separate rem values.
-     ------------------------------------------------------------------ */
   --km-heading-1-size: var(--h1-size);
   --km-heading-2-size: var(--h2-size);
   --km-heading-3-size: var(--h3-size);
   --km-heading-4-size: var(--h4-size);
   --km-heading-5-size: var(--h5-size);
   --km-heading-6-size: var(--h6-size);
-  /* Base rhythm / layout-ish typography tokens. */
   --km-font-size-base: var(--km-font-size-normal);
   --km-heading-spacing: 2em;
   --km-paragraph-spacing: 1.5em;
@@ -369,12 +313,7 @@ hr {
 /* --------------------------------------------------------------------
    Application
    -------------------------------------------------------------------- */
-/* Interface / chrome. */
-body,
-input,
-button,
-textarea,
-select {
+body {
   font-family: var(--km-font-interface);
 }
 
@@ -407,7 +346,6 @@ pre,
   font-family: var(--km-font-mono);
 }
 
-/* Optional: make inline code slightly smaller than body text. */
 code,
 .cm-inline-code,
 .markdown-preview-view code {
