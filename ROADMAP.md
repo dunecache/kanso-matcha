@@ -267,7 +267,7 @@ Typography
 - [x] Paragraph spacing.
 - [x] Heading spacing.
 - [x] Sidebar font sizing.
-- [x] Bundled fonts (Inter + Literata + IBM Plex Mono, base64-embedded Latin woff2).
+- [x] Bundled fonts removed; switched to system fonts (Minimal-style adaptive sizing).
 
 Reading View
 

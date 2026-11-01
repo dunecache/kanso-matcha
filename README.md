@@ -32,16 +32,15 @@ pnpm validate  # lint/validate the SCSS sources and generated theme.css
 
 ### Fonts
 
-Kanso Matcha bundles its type system as base64-encoded woff2 files so the
-theme works offline and on mobile (no @import, no separate font files):
+Kanso Matcha uses **system fonts only** — no bundled font files. Typography
+is adaptive: note content scales with Obsidian's Appearance > Font size
+setting, and all other sizes derive from that base.
 
-- **IBM Plex Sans** (400, 500) — UI, with IBM Plex Sans Arabic (400, 500).
-- **Literata** (variable, roman + italic) — title, headings, body.
-- **IBM Plex Mono** (400, 600) — code.
-- **Noto Naskh Arabic** (variable) — Arabic notes.
+- Interface: system UI stack.
+- Text: Georgia / Times New Roman / Noto Serif (system).
+- Code: ui-monospace / Menlo / Consolas (system).
 
-Regenerate `styles/_fonts.scss` with `pnpm fonts` after changing the pairing.
-Full license text in `FONT-LICENSES.txt`.
+No `pnpm fonts` step is required.
 
 ### Local vault output
 
