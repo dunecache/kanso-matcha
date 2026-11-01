@@ -6,19 +6,29 @@
  */
 
 :root {
-  /* Font stacks — set only via Obsidian's -theme variables. */
+  /* ---------------------------------------------------------------------------
+     Font stacks — set only via Obsidian's -theme variables.
+     --------------------------------------------------------------------------- */
   --font-interface-theme: "IBM Plex Sans", "IBM Plex Sans Arabic",
-    -apple-system, "Segoe UI", Roboto, sans-serif;
-  --font-text-theme: "Literata", Georgia, "Noto Naskh Arabic", serif;
-  --font-monospace-theme: "IBM Plex Mono", ui-monospace, Menlo, Consolas,
-    monospace;
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
 
-  /* Semantic aliases (do not redefine the Obsidian variables above). */
+  --font-text-theme: "Literata", Georgia, "Times New Roman",
+    "Noto Naskh Arabic", serif;
+
+  --font-monospace-theme: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo,
+    Consolas, "Liberation Mono", monospace;
+
+  /* ---------------------------------------------------------------------------
+     Semantic aliases (do not redefine the Obsidian variables above).
+     --------------------------------------------------------------------------- */
   --km-font-interface: var(--font-interface-theme);
   --km-font-text: var(--font-text-theme);
   --km-font-mono: var(--font-monospace-theme);
 
-  /* Heading/inline-title fonts (all use the text face). */
+  /* ---------------------------------------------------------------------------
+     Heading / inline-title fonts (all use the text face).
+     --------------------------------------------------------------------------- */
   --inline-title-font: var(--font-text-theme);
   --h1-font: var(--font-text-theme);
   --h2-font: var(--font-text-theme);
@@ -27,14 +37,23 @@
   --h5-font: var(--font-text-theme);
   --h6-font: var(--font-text-theme);
 
-  /* Font sizes (relative to --font-text-size for editor/reading view). */
+  /* ---------------------------------------------------------------------------
+     Core text metrics.
+     --------------------------------------------------------------------------- */
   --font-text-size: 17px;
   --line-height-normal: 1.6;
   --line-height-tight: 1.3;
+  --km-line-height-editor: 1.65;
 
+  /* ---------------------------------------------------------------------------
+     Inline title.
+     --------------------------------------------------------------------------- */
   --inline-title-size: 2em;
   --inline-title-line-height: 1.2;
 
+  /* ---------------------------------------------------------------------------
+     Heading scale — Obsidian variables are the source of truth.
+     --------------------------------------------------------------------------- */
   --h1-size: 1.75em;
   --h2-size: 1.45em;
   --h3-size: 1.25em;
@@ -56,74 +75,79 @@
   --h5-weight: 500;
   --h6-weight: 500;
 
+  /* ---------------------------------------------------------------------------
+     Optional theme-local aliases.
+     Only keep these if other modules actually consume them.
+     --------------------------------------------------------------------------- */
+  --km-heading-1-size: var(--h1-size);
+  --km-heading-2-size: var(--h2-size);
+  --km-heading-3-size: var(--h3-size);
+  --km-heading-4-size: var(--h4-size);
+  --km-heading-5-size: var(--h5-size);
+  --km-heading-6-size: var(--h6-size);
+
+  /* ---------------------------------------------------------------------------
+     Other markdown element sizes.
+     --------------------------------------------------------------------------- */
   --code-size: 0.85em;
   --table-text-size: 0.95em;
   --footnote-size: 0.85em;
   --tag-size: 0.85em;
 
-  /* UI sizes (fixed px). */
+  /* ---------------------------------------------------------------------------
+     UI sizes (fixed px).
+     --------------------------------------------------------------------------- */
   --font-ui-smaller: 12px;
   --font-ui-small: 13px;
   --font-ui-medium: 15px;
   --font-ui-large: 20px;
 
-  /* Base rhythm */
-  --km-font-size-base: 16px;
-  --font-weight: 400;
-  --km-line-height-base: 1.6;
-  --km-line-height-editor: 1.65;
+  /* ---------------------------------------------------------------------------
+     Base rhythm / layout-ish typography tokens.
+     --------------------------------------------------------------------------- */
+  --km-font-size-base: var(--font-text-size);
   --km-content-width: 68ch;
 
-  /* Heading scale */
-  --km-heading-1-size: 2rem;
-  --km-heading-2-size: 1.75rem;
-  --km-heading-3-size: 1.5rem;
-  --km-heading-4-size: 1.25rem;
-  --km-heading-5-size: 1.125rem;
-  --km-heading-6-size: 1rem;
-
-  /* Heading spacing */
   --km-heading-spacing: 2em;
-
-  /* Paragraph spacing */
   --km-paragraph-spacing: 1.5em;
 
-  /* Sidebar font size */
   --km-font-size-sidebar: 0.875rem;
+
+  --font-weight: 400;
 }
 
+/* -----------------------------------------------------------------------------
+   Application shell typography.
+   ----------------------------------------------------------------------------- */
 body {
   font-family: var(--km-font-interface);
-  font-size: var(--km-font-size-base);
-  line-height: var(--km-line-height-base);
+  font-size: var(--font-ui-medium, 15px);
+  line-height: var(--line-height-normal);
 }
 
-.cm-editor,
-.cm-content,
+/* -----------------------------------------------------------------------------
+   Note content typography — editor, reading view, preview surfaces.
+   ----------------------------------------------------------------------------- */
+.markdown-source-view.mod-cm6 .cm-editor,
+.markdown-source-view.mod-cm6 .cm-content,
 .markdown-reading-view,
-.markdown-source-view.mod-cm6,
+.markdown-reading-view .markdown-preview-view,
 .markdown-preview-view {
   font-family: var(--km-font-text);
+  font-size: var(--font-text-size, 17px);
   line-height: var(--km-line-height-editor);
 }
 
-.cm-editor,
-.cm-content {
-  font-size: 16px;
-}
-
-.markdown-preview-view,
-.markdown-source-view.mod-markdown {
-  font-size: 16px;
-  line-height: var(--km-line-height-editor);
-}
-
-.cm-line,
-.cm-content {
+/* -----------------------------------------------------------------------------
+   Readable measure / content width.
+   ----------------------------------------------------------------------------- */
+.markdown-source-view.mod-cm6 .cm-content,
+.markdown-reading-view .markdown-preview-view {
   max-width: var(--km-content-width);
+  margin-inline: auto;
 }
 
-/* Content width */
-.markdown-reading-view {
-  max-width: var(--km-content-width);
+/* Keep lines inside the constrained measure. */
+.markdown-source-view.mod-cm6 .cm-line {
+  max-width: 100%;
 }
