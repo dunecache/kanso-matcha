@@ -263,7 +263,7 @@ hr {
   /* ------------------------------------------------------------------
      Obsidian-facing typography variables
      ------------------------------------------------------------------ */
-  --line-height-normal: 1.6;
+  --line-height-normal: 1.5;
   --line-height-tight: 1.3;
   --heading-spacing: 1.75em;
   --p-spacing: 1.25em;
@@ -296,7 +296,9 @@ hr {
   --font-ui-small: 13px;
   --font-ui-medium: 15px;
   --font-ui-large: 20px;
-  --km-content-width: 68ch;
+  --km-content-width: 40rem;
+  --km-content-width-wide: 50rem;
+  --km-content-width-max: 88%;
   --km-heading-1-size: var(--h1-size);
   --km-heading-2-size: var(--h2-size);
   --km-heading-3-size: var(--h3-size);
