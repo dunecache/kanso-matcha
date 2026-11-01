@@ -27,8 +27,49 @@
   --h5-font: var(--font-text-theme);
   --h6-font: var(--font-text-theme);
 
+  /* Font sizes (relative to --font-text-size for editor/reading view). */
+  --font-text-size: 17px;
+  --line-height-normal: 1.6;
+  --line-height-tight: 1.3;
+
+  --inline-title-size: 2em;
+  --inline-title-line-height: 1.2;
+
+  --h1-size: 1.75em;
+  --h2-size: 1.45em;
+  --h3-size: 1.25em;
+  --h4-size: 1.1em;
+  --h5-size: 1em;
+  --h6-size: 1em;
+
+  --h1-line-height: 1.2;
+  --h2-line-height: 1.2;
+  --h3-line-height: 1.3;
+  --h4-line-height: 1.3;
+  --h5-line-height: 1.4;
+  --h6-line-height: 1.4;
+
+  --h1-weight: 600;
+  --h2-weight: 600;
+  --h3-weight: 500;
+  --h4-weight: 500;
+  --h5-weight: 500;
+  --h6-weight: 500;
+
+  --code-size: 0.85em;
+  --table-text-size: 0.95em;
+  --footnote-size: 0.85em;
+  --tag-size: 0.85em;
+
+  /* UI sizes (fixed px). */
+  --font-ui-smaller: 12px;
+  --font-ui-small: 13px;
+  --font-ui-medium: 15px;
+  --font-ui-large: 20px;
+
   /* Base rhythm */
   --km-font-size-base: 16px;
+  --font-weight: 400;
   --km-line-height-base: 1.6;
   --km-line-height-editor: 1.65;
   --km-content-width: 68ch;
