@@ -1,0 +1,106 @@
+/*
+ * Kanso Matcha — Editor
+ *
+ * Phase 1: initial editor surface tokens (background, active line, selection).
+ * Phase 3: editor surface, active line, selection polish.
+ * Phase 4: Live Preview / Source Mode typography (serif text face, editor rhythm).
+ * Phase 5: syntax highlighting, cursor, indentation guides, line numbers.
+ */
+
+.cm-editor,
+.cm-scroller {
+  background-color: var(--km-bg);
+}
+
+.cm-content,
+.cm-line {
+  color: var(--km-fg);
+}
+
+.cm-editor,
+.cm-content {
+  font-family: var(--km-font-text);
+}
+
+.cm-editor,
+.cm-content,
+.cm-line {
+  font-size: 16px;
+  line-height: var(--km-line-height-editor);
+}
+
+/* Cursor */
+.cm-editor .cm-cursor {
+  border-left: 1px solid var(--km-focus);
+}
+
+/* Indentation guides */
+.cm-editor .cm-indentGuide,
+.cm-editor .cm-indentation-guide {
+  border-left: 1px solid var(--km-border);
+}
+
+/* Line numbers */
+.cm-editor .cm-gutters {
+  background-color: transparent;
+  border-right: 1px solid var(--km-border);
+}
+
+.cm-editor .cm-gutterElement {
+  color: var(--km-fg-muted);
+}
+
+/* Markdown syntax markers and inline formatting marks (source mode) */
+.cm-editor .cm-header {
+  font-weight: 700;
+}
+
+.cm-editor .cm-strong {
+  font-weight: 600;
+}
+
+.cm-editor .cm-em {
+  font-style: italic;
+}
+
+.cm-editor .cm-link {
+  text-decoration: underline;
+}
+
+.cm-editor .cm-strikethrough {
+  text-decoration: line-through;
+}
+
+/* Syntax highlighting marks */
+.cm-editor .cm-keyword,
+.cm-editor .cm-atom {
+  color: var(--km-clay);
+}
+
+.cm-editor .cm-string,
+.cm-editor .cm-number,
+.cm-editor .cm-def,
+.cm-editor .cm-property {
+  color: var(--km-sage);
+}
+
+.cm-editor .cm-comment,
+.cm-editor .cm-meta {
+  color: var(--km-fg-muted);
+}
+
+.cm-editor .cm-variable,
+.cm-editor .cm-punctuation,
+.cm-editor .cm-operator {
+  color: var(--km-fg);
+}
+
+.cm-activeLine {
+  background-color: var(--km-soft);
+}
+
+.cm-selectionBackground,
+.cm-content ::selection,
+.cm-selectionMatch {
+  background-color: var(--km-soft);
+}

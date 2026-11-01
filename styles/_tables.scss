@@ -1,0 +1,36 @@
+/*
+ * Kanso Matcha — Tables
+ *
+ * Phase 5: table header styling, cell padding, row separators, alternating
+ * rows and hover states for Reading View and Live Preview / Preview surfaces.
+ */
+
+.markdown-reading-view table,
+.markdown-preview table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.markdown-reading-view th,
+.markdown-reading-view td,
+.markdown-preview th,
+.markdown-preview td {
+  border: 1px solid var(--km-border);
+  padding: var(--km-space-2) var(--km-space-3);
+}
+
+.markdown-reading-view th,
+.markdown-preview th {
+  background-color: var(--km-soft);
+  font-weight: 600;
+}
+
+.markdown-reading-view tbody tr:nth-child(even),
+.markdown-preview tbody tr:nth-child(even) {
+  background-color: var(--km-surface);
+}
+
+.markdown-reading-view tbody tr:hover,
+.markdown-preview tbody tr:hover {
+  background-color: var(--km-soft);
+}

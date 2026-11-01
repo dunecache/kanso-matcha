@@ -1,0 +1,37 @@
+/*
+ * Kanso Matcha — Base
+ *
+ * Phase 1: minimal base layer (backgrounds, surfaces, borders) establishing
+ * the semantic token foundation for later phases.
+ */
+
+body {
+  background-color: var(--km-bg);
+  color: var(--km-fg);
+}
+
+.workspace {
+  background-color: var(--km-bg);
+}
+
+.workspace-leaf,
+.workspace-split,
+.workspace-tab-container,
+.modal,
+.dropdown-menu,
+.popover,
+.context-menu,
+.notice,
+.toast,
+.search-result,
+.bases-view {
+  background-color: var(--km-surface);
+}
+
+.workspace-leaf.mod-active {
+  background-color: var(--km-bg);
+}
+
+hr {
+  border-top: 1px solid var(--km-border);
+}

@@ -1,0 +1,27 @@
+/*
+ * Kanso Matcha — Theme entry point
+ *
+ * Phase 1: composition root for the modular stylesheet source.
+ * Phase 2+ will implement modules in dependency order.
+ */
+
+@use 'tokens';
+@use 'variables';
+@use 'base';
+@use 'typography';
+@use 'workspace';
+@use 'editor';
+@use 'markdown';
+@use 'headings';
+@use 'links';
+@use 'callouts';
+@use 'tables';
+@use 'lists';
+@use 'tags';
+@use 'embeds';
+@use 'properties';
+@use 'graph';
+@use 'modals';
+@use 'mobile';
+@use 'accessibility';
+@use 'plugins';

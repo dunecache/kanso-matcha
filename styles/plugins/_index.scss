@@ -1,0 +1,10 @@
+/*
+ * Kanso Matcha — Plugin compatibility (core + community placeholders)
+ *
+ * Phase 1: module composition. Phase 9 will implement plugin-specific styling.
+ */
+
+@use 'dataview';
+@use 'calendar';
+@use 'kanban';
+@use 'excalidraw';

@@ -1,0 +1,83 @@
+/*
+ * Kanso Matcha — Design Tokens
+ *
+ * Phase 0 deliverable: docs/DESIGN-SYSTEM.md
+ * Phase 1 status: initial semantic token layer established.
+ * Phase 2 status: Morning Matcha (light) and Evening Zen (dark) token sets complete.
+ */
+
+:root {
+  /* Morning Matcha (light) */
+  --km-bg: #f3f1e9;
+  --km-surface: #e8e5da;
+  --km-elevated: #faf9f4;
+  --km-fg: #34382f;
+  --km-fg-muted: #636a49;
+  --km-matcha: #89977a;
+  --km-sage: #aab49a;
+  --km-clay: #b68e78;
+  --km-soft: #dce2d1;
+  --km-link: #61705a;
+  --km-selection: #dce2d1;
+  --km-focus: #61705a;
+  --km-border: #d5d0c2;
+  --km-border-strong: #c9c2ae;
+  --km-red: #b0563f;
+  --km-orange: #b07a4a;
+  --km-yellow: #a08b4f;
+  --km-green: #7d8f63;
+  --km-cyan: #5f8078;
+  --km-blue: #6b7f94;
+  --km-purple: #8a7a96;
+  --km-pink: #a97a84;
+  --km-success: #7d8f63;
+  --km-warning: #a08b4f;
+  --km-danger: #b0563f;
+  --km-info: #6b7f94;
+
+  /* Spacing */
+  --km-space-1: 0.25rem;
+  --km-space-2: 0.5rem;
+  --km-space-3: 0.75rem;
+  --km-space-4: 1rem;
+  --km-space-5: 1.25rem;
+  --km-space-6: 1.5rem;
+
+  /* Border width */
+  --km-border-width: 1px;
+
+  /* Radius */
+  --km-radius-sm: 2px;
+  --km-radius-md: 4px;
+  --km-radius-lg: 8px;
+}
+
+.theme-dark {
+  /* Evening Zen (dark) */
+  --km-bg: #22251f;
+  --km-surface: #2d3129;
+  --km-elevated: #363a31;
+  --km-fg: #e8e5d9;
+  --km-fg-muted: #aaa99b;
+  --km-matcha: #a3ae91;
+  --km-sage: #858f76;
+  --km-clay: #b58e79;
+  --km-soft: #41483a;
+  --km-link: #a3ae91;
+  --km-selection: #41483a;
+  --km-focus: #a3ae91;
+  --km-border: #41463b;
+  --km-border-strong: #4d5146;
+  --km-red: #cf7a63;
+  --km-orange: #cf9060;
+  --km-yellow: #c9a25e;
+  --km-green: #a3b58f;
+  --km-cyan: #8fb3a8;
+  --km-blue: #9aa8bd;
+  --km-purple: #b3a3c0;
+  --km-pink: #c49aac;
+  --km-success: #a3b58f;
+  --km-warning: #c9a25e;
+  --km-danger: #cf7a63;
+  --km-info: #9aa8bd;
+}

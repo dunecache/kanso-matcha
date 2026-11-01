@@ -1,0 +1,54 @@
+/*
+ * Kanso Matcha — Headings
+ *
+ * Phase 5: heading hierarchy, font weights and spacing for Reading View,
+ * Live Preview and Source Mode, using the semantic design tokens.
+ */
+
+.markdown-reading-view h1,
+.markdown-preview h1 {
+  font-size: var(--km-heading-1-size);
+  font-weight: 700;
+  margin: var(--km-space-5) 0 var(--km-space-4) 0;
+  color: var(--km-fg);
+}
+
+.markdown-reading-view h2,
+.markdown-preview h2 {
+  font-size: var(--km-heading-2-size);
+  font-weight: 700;
+  margin: var(--km-space-4) 0 var(--km-space-4) 0;
+  color: var(--km-fg);
+}
+
+.markdown-reading-view h3,
+.markdown-preview h3 {
+  font-size: var(--km-heading-3-size);
+  font-weight: 700;
+  margin: var(--km-space-4) 0 var(--km-space-3) 0;
+  color: var(--km-fg);
+}
+
+.markdown-reading-view h4,
+.markdown-preview h4 {
+  font-size: var(--km-heading-4-size);
+  font-weight: 700;
+  margin: var(--km-space-3) 0 var(--km-space-3) 0;
+  color: var(--km-fg);
+}
+
+.markdown-reading-view h5,
+.markdown-preview h5 {
+  font-size: var(--km-heading-5-size);
+  font-weight: 600;
+  margin: var(--km-space-3) 0 var(--km-space-3) 0;
+  color: var(--km-fg);
+}
+
+.markdown-reading-view h6,
+.markdown-preview h6 {
+  font-size: var(--km-heading-6-size);
+  font-weight: 600;
+  margin: var(--km-space-3) 0 var(--km-space-3) 0;
+  color: var(--km-fg);
+}

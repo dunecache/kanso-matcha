@@ -1,0 +1,20 @@
+/*
+ * Kanso Matcha — Lists and checkboxes
+ *
+ * Phase 5: list markers, task checkboxes and completed task appearance.
+ */
+
+.markdown-reading-view ul,
+.markdown-preview ul {
+  list-style: disc;
+}
+
+.markdown-reading-view ol,
+.markdown-preview ol {
+  list-style: decimal;
+}
+
+.markdown-reading-view input[type="checkbox"],
+.markdown-preview input[type="checkbox"] {
+  accent-color: var(--km-success);
+}

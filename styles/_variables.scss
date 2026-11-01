@@ -1,0 +1,110 @@
+/*
+ * Kanso Matcha — Token → Obsidian variable mapping
+ *
+ * Maps the semantic `--km-*` design tokens onto Obsidian's supported CSS
+ * variables under the light (`.theme-light`) and dark (`.theme-dark`) theme
+ * selectors, with fallbacks where appropriate.
+ */
+
+.theme-light {
+  --background-primary: var(--km-bg);
+  --background-primary-alt: var(--km-elevated);
+  --background-secondary: var(--km-surface);
+  --background-secondary-alt: var(--km-elevated);
+  --background-modifier-form-field: var(--km-surface);
+  --background-modifier-form-field-highlighted: var(--km-elevated);
+  --background-modifier-hover: var(--km-soft);
+  --background-modifier-active-hover: var(--km-soft);
+  --background-modifier-border: var(--km-border);
+  --background-modifier-border-hover: var(--km-border);
+  --background-modifier-border-focus: var(--km-focus);
+  --background-modifier-accent: var(--km-matcha);
+
+  --text-normal: var(--km-fg);
+  --text-muted: var(--km-fg-muted);
+  --text-accent: var(--km-link);
+  --text-accent-hover: var(--km-clay);
+  --text-faint: var(--km-fg-muted);
+  --text-on-accent: var(--km-bg);
+  --text-selection: var(--km-selection);
+
+  --text-error: var(--km-danger, #b0563f);
+  --text-success: var(--km-success, #7d8f63);
+  --text-warning: var(--km-warning, #a08b4f);
+  --text-info: var(--km-info, #6b7f94);
+
+  --interactive-normal: var(--km-border);
+  --interactive-accent: var(--km-matcha);
+  --interactive-accent-hover: var(--km-clay);
+  --interactive-hover: var(--km-soft);
+  --interactive-pressed: var(--km-soft);
+
+  --divider-color: var(--km-border);
+  --frame-divider-color: var(--km-border);
+
+  --nav-item-background-hover: var(--km-soft);
+  --nav-item-background-active-hover: var(--km-soft);
+  --nav-item-background-active: var(--km-soft);
+  --nav-item-color: var(--km-fg-muted);
+  --nav-item-color-hover: var(--km-fg);
+  --nav-item-color-active: var(--km-fg);
+  --nav-item-color-selected: var(--km-fg);
+
+  --ribbon-background: var(--km-surface);
+  --titlebar-background: var(--km-surface);
+  --titlebar-background-focused: var(--km-surface);
+  --status-bar-background: var(--km-surface);
+
+  --active-line-bg: rgba(52, 56, 47, 0.05);
+  --text-highlight-bg: var(--km-soft);
+  --text-highlight-bg-active: rgba(52, 56, 47, 0.1);
+}
+
+.theme-dark {
+  --background-primary: var(--km-bg);
+  --background-primary-alt: var(--km-elevated);
+  --background-secondary: var(--km-surface);
+  --background-secondary-alt: var(--km-elevated);
+  --background-modifier-form-field: var(--km-surface);
+  --background-modifier-form-field-highlighted: var(--km-elevated);
+  --background-modifier-hover: var(--km-soft);
+  --background-modifier-active-hover: var(--km-soft);
+  --background-modifier-border: var(--km-border);
+  --background-modifier-border-hover: var(--km-border);
+  --background-modifier-border-focus: var(--km-border);
+  --background-modifier-accent: var(--km-matcha);
+
+  --text-normal: var(--km-fg);
+  --text-muted: var(--km-fg-muted);
+  --text-accent: var(--km-matcha);
+  --text-accent-hover: var(--km-clay);
+  --text-faint: var(--km-fg-muted);
+  --text-on-accent: var(--km-bg);
+  --text-selection: var(--km-soft);
+
+  --interactive-normal: var(--km-border);
+  --interactive-accent: var(--km-matcha);
+  --interactive-accent-hover: var(--km-clay);
+  --interactive-hover: var(--km-soft);
+  --interactive-pressed: var(--km-soft);
+
+  --divider-color: var(--km-border);
+  --frame-divider-color: var(--km-border);
+
+  --nav-item-background-hover: var(--km-soft);
+  --nav-item-background-active-hover: var(--km-soft);
+  --nav-item-background-active: var(--km-soft);
+  --nav-item-color: var(--km-fg-muted);
+  --nav-item-color-hover: var(--km-fg);
+  --nav-item-color-active: var(--km-fg);
+  --nav-item-color-selected: var(--km-fg);
+
+  --ribbon-background: var(--km-surface);
+  --titlebar-background: var(--km-surface);
+  --titlebar-background-focused: var(--km-surface);
+  --status-bar-background: var(--km-surface);
+
+  --active-line-bg: rgba(232, 229, 217, 0.05);
+  --text-highlight-bg: var(--km-soft);
+  --text-highlight-bg-active: rgba(232, 229, 217, 0.1);
+}

@@ -1,0 +1,53 @@
+/*
+ * Kanso Matcha — Callouts
+ *
+ * Phase 5: callout variants with semantic accents for Reading View and
+ * Live Preview / Preview surfaces. The base container styles live in _markdown.
+ */
+
+.markdown-reading-view .callout.note,
+.markdown-preview .callout.note,
+.markdown-reading-view .callout.abstract,
+.markdown-preview .callout.abstract {
+  border-left-color: var(--km-sage);
+}
+
+.markdown-reading-view .callout.info,
+.markdown-preview .callout.info {
+  border-left-color: var(--km-info);
+}
+
+.markdown-reading-view .callout.tip,
+.markdown-preview .callout.tip,
+.markdown-reading-view .callout.success,
+.markdown-preview .callout.success {
+  border-left-color: var(--km-success);
+}
+
+.markdown-reading-view .callout.todo,
+.markdown-preview .callout.todo,
+.markdown-reading-view .callout.example,
+.markdown-preview .callout.example {
+  border-left-color: var(--km-clay);
+}
+
+.markdown-reading-view .callout.question,
+.markdown-preview .callout.question,
+.markdown-reading-view .callout.warning,
+.markdown-preview .callout.warning {
+  border-left-color: var(--km-warning);
+}
+
+.markdown-reading-view .callout.failure,
+.markdown-reading-view .callout.danger,
+.markdown-reading-view .callout.bug,
+.markdown-preview .callout.failure,
+.markdown-preview .callout.danger,
+.markdown-preview .callout.bug {
+  border-left-color: var(--km-danger);
+}
+
+.markdown-reading-view .callout.quote,
+.markdown-preview .callout.quote {
+  border-left-color: var(--km-clay);
+}

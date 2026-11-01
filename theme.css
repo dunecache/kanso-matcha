@@ -1,0 +1,885 @@
+@charset "UTF-8";
+/*
+ * Kanso Matcha — Theme entry point
+ *
+ * Phase 1: composition root for the modular stylesheet source.
+ * Phase 2+ will implement modules in dependency order.
+ */
+/*
+ * Kanso Matcha — Design Tokens
+ *
+ * Phase 0 deliverable: docs/DESIGN-SYSTEM.md
+ * Phase 1 status: initial semantic token layer established.
+ * Phase 2 status: Morning Matcha (light) and Evening Zen (dark) token sets complete.
+ */
+:root {
+  /* Morning Matcha (light) */
+  --km-bg: #f3f1e9;
+  --km-surface: #e8e5da;
+  --km-elevated: #faf9f4;
+  --km-fg: #34382f;
+  --km-fg-muted: #636a49;
+  --km-matcha: #89977a;
+  --km-sage: #aab49a;
+  --km-clay: #b68e78;
+  --km-soft: #dce2d1;
+  --km-link: #61705a;
+  --km-selection: #dce2d1;
+  --km-focus: #61705a;
+  --km-border: #d5d0c2;
+  --km-border-strong: #c9c2ae;
+  --km-red: #b0563f;
+  --km-orange: #b07a4a;
+  --km-yellow: #a08b4f;
+  --km-green: #7d8f63;
+  --km-cyan: #5f8078;
+  --km-blue: #6b7f94;
+  --km-purple: #8a7a96;
+  --km-pink: #a97a84;
+  --km-success: #7d8f63;
+  --km-warning: #a08b4f;
+  --km-danger: #b0563f;
+  --km-info: #6b7f94;
+  /* Spacing */
+  --km-space-1: 0.25rem;
+  --km-space-2: 0.5rem;
+  --km-space-3: 0.75rem;
+  --km-space-4: 1rem;
+  --km-space-5: 1.25rem;
+  --km-space-6: 1.5rem;
+  /* Border width */
+  --km-border-width: 1px;
+  /* Radius */
+  --km-radius-sm: 2px;
+  --km-radius-md: 4px;
+  --km-radius-lg: 8px;
+}
+
+.theme-dark {
+  /* Evening Zen (dark) */
+  --km-bg: #22251f;
+  --km-surface: #2d3129;
+  --km-elevated: #363a31;
+  --km-fg: #e8e5d9;
+  --km-fg-muted: #aaa99b;
+  --km-matcha: #a3ae91;
+  --km-sage: #858f76;
+  --km-clay: #b58e79;
+  --km-soft: #41483a;
+  --km-link: #a3ae91;
+  --km-selection: #41483a;
+  --km-focus: #a3ae91;
+  --km-border: #41463b;
+  --km-border-strong: #4d5146;
+  --km-red: #cf7a63;
+  --km-orange: #cf9060;
+  --km-yellow: #c9a25e;
+  --km-green: #a3b58f;
+  --km-cyan: #8fb3a8;
+  --km-blue: #9aa8bd;
+  --km-purple: #b3a3c0;
+  --km-pink: #c49aac;
+  --km-success: #a3b58f;
+  --km-warning: #c9a25e;
+  --km-danger: #cf7a63;
+  --km-info: #9aa8bd;
+}
+
+/*
+ * Kanso Matcha — Token → Obsidian variable mapping
+ *
+ * Maps the semantic `--km-*` design tokens onto Obsidian's supported CSS
+ * variables under the light (`.theme-light`) and dark (`.theme-dark`) theme
+ * selectors, with fallbacks where appropriate.
+ */
+.theme-light {
+  --background-primary: var(--km-bg);
+  --background-primary-alt: var(--km-elevated);
+  --background-secondary: var(--km-surface);
+  --background-secondary-alt: var(--km-elevated);
+  --background-modifier-form-field: var(--km-surface);
+  --background-modifier-form-field-highlighted: var(--km-elevated);
+  --background-modifier-hover: var(--km-soft);
+  --background-modifier-active-hover: var(--km-soft);
+  --background-modifier-border: var(--km-border);
+  --background-modifier-border-hover: var(--km-border);
+  --background-modifier-border-focus: var(--km-focus);
+  --background-modifier-accent: var(--km-matcha);
+  --text-normal: var(--km-fg);
+  --text-muted: var(--km-fg-muted);
+  --text-accent: var(--km-link);
+  --text-accent-hover: var(--km-clay);
+  --text-faint: var(--km-fg-muted);
+  --text-on-accent: var(--km-bg);
+  --text-selection: var(--km-selection);
+  --text-error: var(--km-danger, #b0563f);
+  --text-success: var(--km-success, #7d8f63);
+  --text-warning: var(--km-warning, #a08b4f);
+  --text-info: var(--km-info, #6b7f94);
+  --interactive-normal: var(--km-border);
+  --interactive-accent: var(--km-matcha);
+  --interactive-accent-hover: var(--km-clay);
+  --interactive-hover: var(--km-soft);
+  --interactive-pressed: var(--km-soft);
+  --divider-color: var(--km-border);
+  --frame-divider-color: var(--km-border);
+  --nav-item-background-hover: var(--km-soft);
+  --nav-item-background-active-hover: var(--km-soft);
+  --nav-item-background-active: var(--km-soft);
+  --nav-item-color: var(--km-fg-muted);
+  --nav-item-color-hover: var(--km-fg);
+  --nav-item-color-active: var(--km-fg);
+  --nav-item-color-selected: var(--km-fg);
+  --ribbon-background: var(--km-surface);
+  --titlebar-background: var(--km-surface);
+  --titlebar-background-focused: var(--km-surface);
+  --status-bar-background: var(--km-surface);
+  --active-line-bg: rgba(52, 56, 47, 0.05);
+  --text-highlight-bg: var(--km-soft);
+  --text-highlight-bg-active: rgba(52, 56, 47, 0.1);
+}
+
+.theme-dark {
+  --background-primary: var(--km-bg);
+  --background-primary-alt: var(--km-elevated);
+  --background-secondary: var(--km-surface);
+  --background-secondary-alt: var(--km-elevated);
+  --background-modifier-form-field: var(--km-surface);
+  --background-modifier-form-field-highlighted: var(--km-elevated);
+  --background-modifier-hover: var(--km-soft);
+  --background-modifier-active-hover: var(--km-soft);
+  --background-modifier-border: var(--km-border);
+  --background-modifier-border-hover: var(--km-border);
+  --background-modifier-border-focus: var(--km-border);
+  --background-modifier-accent: var(--km-matcha);
+  --text-normal: var(--km-fg);
+  --text-muted: var(--km-fg-muted);
+  --text-accent: var(--km-matcha);
+  --text-accent-hover: var(--km-clay);
+  --text-faint: var(--km-fg-muted);
+  --text-on-accent: var(--km-bg);
+  --text-selection: var(--km-soft);
+  --interactive-normal: var(--km-border);
+  --interactive-accent: var(--km-matcha);
+  --interactive-accent-hover: var(--km-clay);
+  --interactive-hover: var(--km-soft);
+  --interactive-pressed: var(--km-soft);
+  --divider-color: var(--km-border);
+  --frame-divider-color: var(--km-border);
+  --nav-item-background-hover: var(--km-soft);
+  --nav-item-background-active-hover: var(--km-soft);
+  --nav-item-background-active: var(--km-soft);
+  --nav-item-color: var(--km-fg-muted);
+  --nav-item-color-hover: var(--km-fg);
+  --nav-item-color-active: var(--km-fg);
+  --nav-item-color-selected: var(--km-fg);
+  --ribbon-background: var(--km-surface);
+  --titlebar-background: var(--km-surface);
+  --titlebar-background-focused: var(--km-surface);
+  --status-bar-background: var(--km-surface);
+  --active-line-bg: rgba(232, 229, 217, 0.05);
+  --text-highlight-bg: var(--km-soft);
+  --text-highlight-bg-active: rgba(232, 229, 217, 0.1);
+}
+
+/*
+ * Kanso Matcha — Base
+ *
+ * Phase 1: minimal base layer (backgrounds, surfaces, borders) establishing
+ * the semantic token foundation for later phases.
+ */
+body {
+  background-color: var(--km-bg);
+  color: var(--km-fg);
+}
+
+.workspace {
+  background-color: var(--km-bg);
+}
+
+.workspace-leaf,
+.workspace-split,
+.workspace-tab-container,
+.modal,
+.dropdown-menu,
+.popover,
+.context-menu,
+.notice,
+.toast,
+.search-result,
+.bases-view {
+  background-color: var(--km-surface);
+}
+
+.workspace-leaf.mod-active {
+  background-color: var(--km-bg);
+}
+
+hr {
+  border-top: 1px solid var(--km-border);
+}
+
+/*
+ * Kanso Matcha — Typography
+ *
+ * Phase 1: initial type foundation — font stacks, base scale and rhythm.
+ * Phase 4: typography group completed (fonts, scale, rhythm, headings, spacing).
+ */
+:root {
+  /* Font stacks (system fallbacks; no bundled fonts without licensing). */
+  --km-font-interface: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  --km-font-text: Georgia, "Times New Roman", serif;
+  --km-font-mono: "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
+  /* Base rhythm */
+  --km-font-size-base: 16px;
+  --km-line-height-base: 1.6;
+  --km-line-height-editor: 1.65;
+  --km-content-width: 68ch;
+  /* Heading scale */
+  --km-heading-1-size: 2rem;
+  --km-heading-2-size: 1.75rem;
+  --km-heading-3-size: 1.5rem;
+  --km-heading-4-size: 1.25rem;
+  --km-heading-5-size: 1.125rem;
+  --km-heading-6-size: 1rem;
+  /* Heading spacing */
+  --km-heading-spacing: 2em;
+  /* Paragraph spacing */
+  --km-paragraph-spacing: 1.5em;
+  /* Sidebar font size */
+  --km-font-size-sidebar: 0.875rem;
+}
+
+body {
+  font-family: var(--km-font-interface);
+  font-size: var(--km-font-size-base);
+  line-height: var(--km-line-height-base);
+}
+
+.cm-editor,
+.cm-content,
+.markdown-reading-view,
+.markdown-source-view.mod-cm6,
+.markdown-preview-view {
+  font-family: var(--km-font-text);
+  line-height: var(--km-line-height-editor);
+}
+
+.cm-editor,
+.cm-content {
+  font-size: 16px;
+}
+
+.markdown-preview-view,
+.markdown-source-view.mod-markdown {
+  font-size: 16px;
+  line-height: var(--km-line-height-editor);
+}
+
+.cm-line,
+.cm-content {
+  max-width: var(--km-content-width);
+}
+
+/*
+ * Kanso Matcha — Workspace
+ *
+ * Phase 1: initial application shell surfaces (backgrounds, surfaces, borders).
+ * Phase 3: full workspace / sidebar / tab / ribbon styling.
+ */
+.workspace,
+.workspace-background,
+.workspace-main,
+.main-content,
+.main-pane,
+.workspace-main,
+.workspace-leaf,
+.workspace-split,
+.workspace-tab-container,
+.workspace-tabs,
+.workspace-nav,
+.nav-panel,
+.nav-files,
+.nav-search,
+.nav-tabs,
+.nav-settings,
+.sidebar,
+.sidebar-section,
+.sidebar-resizer,
+.left-sidebar,
+.right-sidebar,
+.right-sidebar.mod-right,
+.left-sidebar.mod-left,
+.modal,
+.dropdown-menu,
+.popover,
+.context-menu,
+.notice,
+.toast,
+.search-result,
+.bases-view,
+.modal.mod-sidebar,
+.modal.mod-search,
+.modal.mod-command-palette,
+.modal.mod-image-viewer,
+.modal.mod-quick-switcher,
+.modal.mod-lightbox,
+.modal.mod-media {
+  background-color: var(--km-surface);
+}
+
+.workspace,
+.workspace-background,
+.workspace-main,
+.main-content,
+.main-pane,
+.workspace-main,
+.workspace-leaf.mod-active,
+.workspace-tab-container .tab.mod-active,
+.tab-container .tab.mod-active,
+.modal.mod-sidebar,
+.modal.mod-search,
+.modal.mod-command-palette,
+.modal.mod-image-viewer,
+.modal.mod-quick-switcher,
+.modal.mod-lightbox,
+.modal.mod-media {
+  background-color: var(--km-bg);
+}
+
+/* Workspace separators */
+.workspace-split,
+.workspace-leaf-container,
+.workspace-tab-container {
+  border-top: 1px solid var(--km-border);
+  border-left: 1px solid var(--km-border);
+  border-right: 1px solid var(--km-border);
+}
+
+/* Navigation: file rows, hover and active states */
+.nav-file,
+.nav-folder,
+.nav-file .is-hoverable,
+.nav-folder .is-hoverable,
+.nav-file .is-active,
+.nav-folder .is-active,
+.nav-file .is-cta,
+.nav-folder .is-cta {
+  background-color: transparent;
+}
+
+.nav-file.is-hoverable:hover,
+.nav-folder.is-hoverable:hover,
+.nav-file .is-hoverable:hover,
+.nav-folder .is-hoverable:hover {
+  background-color: var(--km-soft);
+}
+
+.nav-file.is-active,
+.nav-folder.is-active,
+.nav-file .is-active,
+.nav-folder .is-active {
+  background-color: var(--km-soft);
+}
+
+/* Application UI surfaces */
+.status-bar {
+  background-color: var(--km-surface);
+}
+
+.tooltip {
+  background-color: var(--km-elevated);
+  color: var(--km-fg);
+  border: 1px solid var(--km-border);
+}
+
+.notice {
+  background-color: var(--km-surface);
+  color: var(--km-fg);
+}
+
+.settings {
+  background-color: var(--km-bg);
+}
+
+.properties,
+.metadata {
+  background-color: var(--km-bg);
+}
+
+.graph-view,
+.graph {
+  background-color: var(--km-bg);
+}
+
+.canvas,
+.canvas-pane {
+  background-color: var(--km-bg);
+}
+
+/*
+ * Kanso Matcha — Editor
+ *
+ * Phase 1: initial editor surface tokens (background, active line, selection).
+ * Phase 3: editor surface, active line, selection polish.
+ * Phase 4: Live Preview / Source Mode typography (serif text face, editor rhythm).
+ * Phase 5: syntax highlighting, cursor, indentation guides, line numbers.
+ */
+.cm-editor,
+.cm-scroller {
+  background-color: var(--km-bg);
+}
+
+.cm-content,
+.cm-line {
+  color: var(--km-fg);
+}
+
+.cm-editor,
+.cm-content {
+  font-family: var(--km-font-text);
+}
+
+.cm-editor,
+.cm-content,
+.cm-line {
+  font-size: 16px;
+  line-height: var(--km-line-height-editor);
+}
+
+/* Cursor */
+.cm-editor .cm-cursor {
+  border-left: 1px solid var(--km-focus);
+}
+
+/* Indentation guides */
+.cm-editor .cm-indentGuide,
+.cm-editor .cm-indentation-guide {
+  border-left: 1px solid var(--km-border);
+}
+
+/* Line numbers */
+.cm-editor .cm-gutters {
+  background-color: transparent;
+  border-right: 1px solid var(--km-border);
+}
+
+.cm-editor .cm-gutterElement {
+  color: var(--km-fg-muted);
+}
+
+/* Markdown syntax markers and inline formatting marks (source mode) */
+.cm-editor .cm-header {
+  font-weight: 700;
+}
+
+.cm-editor .cm-strong {
+  font-weight: 600;
+}
+
+.cm-editor .cm-em {
+  font-style: italic;
+}
+
+.cm-editor .cm-link {
+  text-decoration: underline;
+}
+
+.cm-editor .cm-strikethrough {
+  text-decoration: line-through;
+}
+
+/* Syntax highlighting marks */
+.cm-editor .cm-keyword,
+.cm-editor .cm-atom {
+  color: var(--km-clay);
+}
+
+.cm-editor .cm-string,
+.cm-editor .cm-number,
+.cm-editor .cm-def,
+.cm-editor .cm-property {
+  color: var(--km-sage);
+}
+
+.cm-editor .cm-comment,
+.cm-editor .cm-meta {
+  color: var(--km-fg-muted);
+}
+
+.cm-editor .cm-variable,
+.cm-editor .cm-punctuation,
+.cm-editor .cm-operator {
+  color: var(--km-fg);
+}
+
+.cm-activeLine {
+  background-color: var(--km-soft);
+}
+
+.cm-selectionBackground,
+.cm-content ::selection,
+.cm-selectionMatch {
+  background-color: var(--km-soft);
+}
+
+/*
+ * Kanso Matcha — Markdown
+ *
+ * Phase 1: minimal markdown surface foundation (backgrounds, base typography).
+ * Phase 4: reading-view content styles (blockquotes, lists, horizontal rules).
+ * Phase 5: headings, typography, lists, tables, callouts, code, math, embeds.
+ */
+.markdown-reading-view,
+.markdown-source-view.mod-markdown,
+.markdown-source-view.mod-cm6,
+.markdown-preview-view,
+.markdown-preview,
+.markdown-preview-sizer,
+.markdown-preview-peek {
+  background-color: var(--km-bg);
+}
+
+.markdown-source-view.mod-cm6 .cm-scroller {
+  border: 0;
+}
+
+.markdown-source-view.mod-cm6 .cm-content {
+  font-family: var(--km-font-text);
+}
+
+.markdown-reading-view blockquote,
+.markdown-source-view.mod-markdown blockquote,
+.markdown-preview blockquote {
+  background-color: var(--km-soft);
+  border-left: 2px solid var(--km-clay);
+  color: var(--km-fg-muted);
+}
+
+.markdown-reading-view ul,
+.markdown-source-view.mod-markdown ul,
+.markdown-preview ul,
+.markdown-reading-view ol,
+.markdown-source-view.mod-markdown ol,
+.markdown-preview ol {
+  color: var(--km-fg);
+}
+
+.markdown-reading-view li > ul,
+.markdown-reading-view li > ol,
+.markdown-source-view.mod-markdown li > ul,
+.markdown-source-view.mod-markdown li > ol,
+.markdown-preview li > ul,
+.markdown-preview li > ol {
+  color: var(--km-fg-muted);
+}
+
+.markdown-reading-view hr,
+.markdown-source-view.mod-markdown hr,
+.markdown-preview hr {
+  border-top: 1px solid var(--km-border);
+}
+
+/* Inline code */
+.markdown-reading-view :not(pre) > code,
+.markdown-source-view.mod-markdown :not(pre) > code,
+.markdown-preview :not(pre) > code {
+  font-family: var(--km-font-mono);
+  font-size: 0.875em;
+  background-color: var(--km-soft);
+  color: var(--km-fg);
+  padding: 0.1em 0.35em;
+  border-radius: var(--km-radius-sm);
+}
+
+/* Code blocks */
+.markdown-reading-view pre,
+.markdown-preview pre {
+  background-color: var(--km-surface);
+  border: 1px solid var(--km-border);
+  border-radius: var(--km-radius-md);
+  padding: var(--km-space-3);
+  overflow: auto;
+}
+
+.markdown-reading-view pre code,
+.markdown-preview pre code {
+  background-color: transparent;
+  padding: 0;
+  border: none;
+}
+
+/* Callouts */
+.markdown-reading-view .callout,
+.markdown-preview .callout {
+  background-color: var(--km-soft);
+  border-left: 2px solid var(--km-clay);
+  border-radius: var(--km-radius-sm);
+  padding: var(--km-space-3) var(--km-space-4);
+}
+
+.markdown-reading-view .callout-title,
+.markdown-preview .callout-title {
+  font-weight: 600;
+  color: var(--km-fg);
+}
+
+/* Math blocks */
+.markdown-reading-view .katex-display,
+.markdown-preview .katex-display {
+  margin: var(--km-space-4) 0;
+}
+
+/*
+ * Kanso Matcha — Headings
+ *
+ * Phase 5: heading hierarchy, font weights and spacing for Reading View,
+ * Live Preview and Source Mode, using the semantic design tokens.
+ */
+.markdown-reading-view h1,
+.markdown-preview h1 {
+  font-size: var(--km-heading-1-size);
+  font-weight: 700;
+  margin: var(--km-space-5) 0 var(--km-space-4) 0;
+  color: var(--km-fg);
+}
+
+.markdown-reading-view h2,
+.markdown-preview h2 {
+  font-size: var(--km-heading-2-size);
+  font-weight: 700;
+  margin: var(--km-space-4) 0 var(--km-space-4) 0;
+  color: var(--km-fg);
+}
+
+.markdown-reading-view h3,
+.markdown-preview h3 {
+  font-size: var(--km-heading-3-size);
+  font-weight: 700;
+  margin: var(--km-space-4) 0 var(--km-space-3) 0;
+  color: var(--km-fg);
+}
+
+.markdown-reading-view h4,
+.markdown-preview h4 {
+  font-size: var(--km-heading-4-size);
+  font-weight: 700;
+  margin: var(--km-space-3) 0 var(--km-space-3) 0;
+  color: var(--km-fg);
+}
+
+.markdown-reading-view h5,
+.markdown-preview h5 {
+  font-size: var(--km-heading-5-size);
+  font-weight: 600;
+  margin: var(--km-space-3) 0 var(--km-space-3) 0;
+  color: var(--km-fg);
+}
+
+.markdown-reading-view h6,
+.markdown-preview h6 {
+  font-size: var(--km-heading-6-size);
+  font-weight: 600;
+  margin: var(--km-space-3) 0 var(--km-space-3) 0;
+  color: var(--km-fg);
+}
+
+/*
+ * Kanso Matcha — Links
+ *
+ * Phase 4: reading-view and interface link styling.
+ * Muted accent, clear hover, accessible distinction from normal text.
+ */
+.markdown-reading-view a,
+.cm-content a,
+.markdown-preview a,
+a.internal-link,
+a.external-link {
+  color: var(--km-link);
+}
+
+.markdown-reading-view a:hover,
+.cm-content a:hover,
+.markdown-preview a:hover,
+a.internal-link:hover,
+a.external-link:hover {
+  color: var(--km-clay);
+}
+
+/*
+ * Kanso Matcha — Callouts
+ *
+ * Phase 5: callout variants with semantic accents for Reading View and
+ * Live Preview / Preview surfaces. The base container styles live in _markdown.
+ */
+.markdown-reading-view .callout.note,
+.markdown-preview .callout.note,
+.markdown-reading-view .callout.abstract,
+.markdown-preview .callout.abstract {
+  border-left-color: var(--km-sage);
+}
+
+.markdown-reading-view .callout.info,
+.markdown-preview .callout.info {
+  border-left-color: var(--km-info);
+}
+
+.markdown-reading-view .callout.tip,
+.markdown-preview .callout.tip,
+.markdown-reading-view .callout.success,
+.markdown-preview .callout.success {
+  border-left-color: var(--km-success);
+}
+
+.markdown-reading-view .callout.todo,
+.markdown-preview .callout.todo,
+.markdown-reading-view .callout.example,
+.markdown-preview .callout.example {
+  border-left-color: var(--km-clay);
+}
+
+.markdown-reading-view .callout.question,
+.markdown-preview .callout.question,
+.markdown-reading-view .callout.warning,
+.markdown-preview .callout.warning {
+  border-left-color: var(--km-warning);
+}
+
+.markdown-reading-view .callout.failure,
+.markdown-reading-view .callout.danger,
+.markdown-reading-view .callout.bug,
+.markdown-preview .callout.failure,
+.markdown-preview .callout.danger,
+.markdown-preview .callout.bug {
+  border-left-color: var(--km-danger);
+}
+
+.markdown-reading-view .callout.quote,
+.markdown-preview .callout.quote {
+  border-left-color: var(--km-clay);
+}
+
+/*
+ * Kanso Matcha — Tables
+ *
+ * Phase 5: table header styling, cell padding, row separators, alternating
+ * rows and hover states for Reading View and Live Preview / Preview surfaces.
+ */
+.markdown-reading-view table,
+.markdown-preview table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.markdown-reading-view th,
+.markdown-reading-view td,
+.markdown-preview th,
+.markdown-preview td {
+  border: 1px solid var(--km-border);
+  padding: var(--km-space-2) var(--km-space-3);
+}
+
+.markdown-reading-view th,
+.markdown-preview th {
+  background-color: var(--km-soft);
+  font-weight: 600;
+}
+
+.markdown-reading-view tbody tr:nth-child(even),
+.markdown-preview tbody tr:nth-child(even) {
+  background-color: var(--km-surface);
+}
+
+.markdown-reading-view tbody tr:hover,
+.markdown-preview tbody tr:hover {
+  background-color: var(--km-soft);
+}
+
+/*
+ * Kanso Matcha — Lists and checkboxes
+ *
+ * Phase 5: list markers, task checkboxes and completed task appearance.
+ */
+.markdown-reading-view ul,
+.markdown-preview ul {
+  list-style: disc;
+}
+
+.markdown-reading-view ol,
+.markdown-preview ol {
+  list-style: decimal;
+}
+
+.markdown-reading-view input[type=checkbox],
+.markdown-preview input[type=checkbox] {
+  accent-color: var(--km-success);
+}
+
+/*
+ * Kanso Matcha — Tags
+ *
+ * Phase 1: placeholder for tag styling module.
+ * Phase 5 will implement tag chips and colors.
+ */
+/*
+ * Kanso Matcha — Embeds
+ *
+ * Phase 1: placeholder for embed/transclusion module.
+ * Phase 5 will implement embeds, transclusions, iframes.
+ */
+/*
+ * Kanso Matcha — Properties
+ *
+ * Phase 1: placeholder for properties panel module.
+ * Phase 3 will implement properties panel styling.
+ */
+/*
+ * Kanso Matcha — Graph
+ *
+ * Phase 1: placeholder for graph view module.
+ * Phase 3 will implement graph view styling.
+ */
+/*
+ * Kanso Matcha — Modals
+ *
+ * Phase 1: placeholder for modal module.
+ * Phase 3 will implement modal surfaces, borders, focus.
+ */
+/*
+ * Kanso Matcha — Mobile
+ *
+ * Phase 1: placeholder for mobile module.
+ * Phase 8 will implement mobile-first overrides.
+ */
+/*
+ * Kanso Matcha — Accessibility
+ *
+ * Phase 1: placeholder for accessibility module.
+ * Phase 10 will implement focus, reduced motion, contrast checks.
+ */
+/*
+ * Kanso Matcha — Plugin compatibility (core + community placeholders)
+ *
+ * Phase 1: module composition. Phase 9 will implement plugin-specific styling.
+ */
+/*
+ * Kanso Matcha — Dataview plugin support (placeholder)
+ *
+ * Phase 9 will implement Dataview styling (tables/cards) with light/dark parity.
+ */
+/*
+ * Kanso Matcha — Calendar plugin support (placeholder)
+ *
+ * Phase 9 will implement Calendar styling with light/dark parity.
+ */
+/*
+ * Kanso Matcha — Kanban plugin support (placeholder)
+ *
+ * Phase 9 will implement Kanban styling with light/dark parity.
+ */
+/*
+ * Kanso Matcha — Excalidraw plugin support (placeholder)
+ *
+ * Phase 9 will implement Excalidraw styling with light/dark parity.
+ */

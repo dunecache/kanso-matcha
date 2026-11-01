@@ -1,0 +1,137 @@
+/*
+ * Kanso Matcha — Workspace
+ *
+ * Phase 1: initial application shell surfaces (backgrounds, surfaces, borders).
+ * Phase 3: full workspace / sidebar / tab / ribbon styling.
+ */
+
+.workspace,
+.workspace-background,
+.workspace-main,
+.main-content,
+.main-pane,
+.workspace-main,
+.workspace-leaf,
+.workspace-split,
+.workspace-tab-container,
+.workspace-tabs,
+.workspace-nav,
+.nav-panel,
+.nav-files,
+.nav-search,
+.nav-tabs,
+.nav-settings,
+.sidebar,
+.sidebar-section,
+.sidebar-resizer,
+.left-sidebar,
+.right-sidebar,
+.right-sidebar.mod-right,
+.left-sidebar.mod-left,
+.modal,
+.dropdown-menu,
+.popover,
+.context-menu,
+.notice,
+.toast,
+.search-result,
+.bases-view,
+.modal.mod-sidebar,
+.modal.mod-search,
+.modal.mod-command-palette,
+.modal.mod-image-viewer,
+.modal.mod-quick-switcher,
+.modal.mod-lightbox,
+.modal.mod-media {
+  background-color: var(--km-surface);
+}
+
+.workspace,
+.workspace-background,
+.workspace-main,
+.main-content,
+.main-pane,
+.workspace-main,
+.workspace-leaf.mod-active,
+.workspace-tab-container .tab.mod-active,
+.tab-container .tab.mod-active,
+.modal.mod-sidebar,
+.modal.mod-search,
+.modal.mod-command-palette,
+.modal.mod-image-viewer,
+.modal.mod-quick-switcher,
+.modal.mod-lightbox,
+.modal.mod-media {
+  background-color: var(--km-bg);
+}
+
+/* Workspace separators */
+.workspace-split,
+.workspace-leaf-container,
+.workspace-tab-container {
+  border-top: 1px solid var(--km-border);
+  border-left: 1px solid var(--km-border);
+  border-right: 1px solid var(--km-border);
+}
+
+/* Navigation: file rows, hover and active states */
+.nav-file,
+.nav-folder,
+.nav-file .is-hoverable,
+.nav-folder .is-hoverable,
+.nav-file .is-active,
+.nav-folder .is-active,
+.nav-file .is-cta,
+.nav-folder .is-cta {
+  background-color: transparent;
+}
+
+.nav-file.is-hoverable:hover,
+.nav-folder.is-hoverable:hover,
+.nav-file .is-hoverable:hover,
+.nav-folder .is-hoverable:hover {
+  background-color: var(--km-soft);
+}
+
+.nav-file.is-active,
+.nav-folder.is-active,
+.nav-file .is-active,
+.nav-folder .is-active {
+  background-color: var(--km-soft);
+}
+
+/* Application UI surfaces */
+.status-bar {
+  background-color: var(--km-surface);
+}
+
+.tooltip {
+  background-color: var(--km-elevated);
+  color: var(--km-fg);
+  border: 1px solid var(--km-border);
+}
+
+.notice {
+  background-color: var(--km-surface);
+  color: var(--km-fg);
+}
+
+.settings {
+  background-color: var(--km-bg);
+}
+
+.properties,
+.metadata {
+  background-color: var(--km-bg);
+}
+
+.graph-view,
+.graph {
+  background-color: var(--km-bg);
+}
+
+.canvas,
+.canvas-pane {
+  background-color: var(--km-bg);
+}
+

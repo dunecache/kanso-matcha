@@ -1,0 +1,68 @@
+/*
+ * Kanso Matcha — Typography
+ *
+ * Phase 1: initial type foundation — font stacks, base scale and rhythm.
+ * Phase 4: typography group completed (fonts, scale, rhythm, headings, spacing).
+ */
+
+:root {
+  /* Font stacks (system fallbacks; no bundled fonts without licensing). */
+  --km-font-interface: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  --km-font-text: Georgia, "Times New Roman", serif;
+  --km-font-mono: "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
+
+  /* Base rhythm */
+  --km-font-size-base: 16px;
+  --km-line-height-base: 1.6;
+  --km-line-height-editor: 1.65;
+  --km-content-width: 68ch;
+
+  /* Heading scale */
+  --km-heading-1-size: 2rem;
+  --km-heading-2-size: 1.75rem;
+  --km-heading-3-size: 1.5rem;
+  --km-heading-4-size: 1.25rem;
+  --km-heading-5-size: 1.125rem;
+  --km-heading-6-size: 1rem;
+
+  /* Heading spacing */
+  --km-heading-spacing: 2em;
+
+  /* Paragraph spacing */
+  --km-paragraph-spacing: 1.5em;
+
+  /* Sidebar font size */
+  --km-font-size-sidebar: 0.875rem;
+}
+
+body {
+  font-family: var(--km-font-interface);
+  font-size: var(--km-font-size-base);
+  line-height: var(--km-line-height-base);
+}
+
+.cm-editor,
+.cm-content,
+.markdown-reading-view,
+.markdown-source-view.mod-cm6,
+.markdown-preview-view {
+  font-family: var(--km-font-text);
+  line-height: var(--km-line-height-editor);
+}
+
+.cm-editor,
+.cm-content {
+  font-size: 16px;
+}
+
+.markdown-preview-view,
+.markdown-source-view.mod-markdown {
+  font-size: 16px;
+  line-height: var(--km-line-height-editor);
+}
+
+.cm-line,
+.cm-content {
+  max-width: var(--km-content-width);
+}

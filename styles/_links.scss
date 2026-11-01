@@ -1,0 +1,22 @@
+/*
+ * Kanso Matcha — Links
+ *
+ * Phase 4: reading-view and interface link styling.
+ * Muted accent, clear hover, accessible distinction from normal text.
+ */
+
+.markdown-reading-view a,
+.cm-content a,
+.markdown-preview a,
+a.internal-link,
+a.external-link {
+  color: var(--km-link);
+}
+
+.markdown-reading-view a:hover,
+.cm-content a:hover,
+.markdown-preview a:hover,
+a.internal-link:hover,
+a.external-link:hover {
+  color: var(--km-clay);
+}

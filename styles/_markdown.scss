@@ -1,0 +1,107 @@
+/*
+ * Kanso Matcha — Markdown
+ *
+ * Phase 1: minimal markdown surface foundation (backgrounds, base typography).
+ * Phase 4: reading-view content styles (blockquotes, lists, horizontal rules).
+ * Phase 5: headings, typography, lists, tables, callouts, code, math, embeds.
+ */
+
+.markdown-reading-view,
+.markdown-source-view.mod-markdown,
+.markdown-source-view.mod-cm6,
+.markdown-preview-view,
+.markdown-preview,
+.markdown-preview-sizer,
+.markdown-preview-peek {
+  background-color: var(--km-bg);
+}
+
+.markdown-source-view.mod-cm6 .cm-scroller {
+  border: 0;
+}
+
+.markdown-source-view.mod-cm6 .cm-content {
+  font-family: var(--km-font-text);
+}
+
+.markdown-reading-view blockquote,
+.markdown-source-view.mod-markdown blockquote,
+.markdown-preview blockquote {
+  background-color: var(--km-soft);
+  border-left: 2px solid var(--km-clay);
+  color: var(--km-fg-muted);
+}
+
+.markdown-reading-view ul,
+.markdown-source-view.mod-markdown ul,
+.markdown-preview ul,
+.markdown-reading-view ol,
+.markdown-source-view.mod-markdown ol,
+.markdown-preview ol {
+  color: var(--km-fg);
+}
+
+.markdown-reading-view li > ul,
+.markdown-reading-view li > ol,
+.markdown-source-view.mod-markdown li > ul,
+.markdown-source-view.mod-markdown li > ol,
+.markdown-preview li > ul,
+.markdown-preview li > ol {
+  color: var(--km-fg-muted);
+}
+
+.markdown-reading-view hr,
+.markdown-source-view.mod-markdown hr,
+.markdown-preview hr {
+  border-top: 1px solid var(--km-border);
+}
+
+/* Inline code */
+.markdown-reading-view :not(pre) > code,
+.markdown-source-view.mod-markdown :not(pre) > code,
+.markdown-preview :not(pre) > code {
+  font-family: var(--km-font-mono);
+  font-size: 0.875em;
+  background-color: var(--km-soft);
+  color: var(--km-fg);
+  padding: 0.1em 0.35em;
+  border-radius: var(--km-radius-sm);
+}
+
+/* Code blocks */
+.markdown-reading-view pre,
+.markdown-preview pre {
+  background-color: var(--km-surface);
+  border: 1px solid var(--km-border);
+  border-radius: var(--km-radius-md);
+  padding: var(--km-space-3);
+  overflow: auto;
+}
+
+.markdown-reading-view pre code,
+.markdown-preview pre code {
+  background-color: transparent;
+  padding: 0;
+  border: none;
+}
+
+/* Callouts */
+.markdown-reading-view .callout,
+.markdown-preview .callout {
+  background-color: var(--km-soft);
+  border-left: 2px solid var(--km-clay);
+  border-radius: var(--km-radius-sm);
+  padding: var(--km-space-3) var(--km-space-4);
+}
+
+.markdown-reading-view .callout-title,
+.markdown-preview .callout-title {
+  font-weight: 600;
+  color: var(--km-fg);
+}
+
+/* Math blocks */
+.markdown-reading-view .katex-display,
+.markdown-preview .katex-display {
+  margin: var(--km-space-4) 0;
+}
