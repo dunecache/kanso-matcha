@@ -4,6 +4,7 @@
  * Phase 1: minimal markdown surface foundation (backgrounds, base typography).
  * Phase 4: reading-view content styles (blockquotes, lists, horizontal rules).
  * Phase 5: headings, typography, lists, tables, callouts, code, math, embeds.
+ * Phase 6: image features (default sizing, captions).
  */
 
 .markdown-reading-view,
@@ -104,4 +105,19 @@
 .markdown-reading-view .katex-display,
 .markdown-preview .katex-display {
   margin: var(--km-space-4) 0;
+}
+
+/* Images */
+.markdown-reading-view img,
+.markdown-preview img {
+  max-width: 100%;
+  height: auto;
+}
+
+.markdown-reading-view figcaption,
+.markdown-preview figcaption {
+  color: var(--km-fg-muted);
+  font-size: 0.875rem;
+  text-align: center;
+  margin-top: var(--km-space-2);
 }

@@ -384,7 +384,7 @@ Phase 6 — Minimal-Inspired Layout Features
 
 Goal: Preserve Minimal's practical strengths.
 
-> **Phase 6 status:** §Content width in progress (§Normal line width implemented via --km-content-width; wide, maximum, full-width and responsive content width pending).
+> **Phase 6 status:** §Content width in progress (§Normal line width implemented via --km-content-width; wide, maximum, full-width and responsive content width pending). §Image features in progress (§Default image sizing and image captions implemented; wide/full-width images, image grids, image borders and filters pending). §Tables and embeds pending. §Cards and helpers pending. §Interface options pending.
 
 Content width
 
@@ -396,11 +396,11 @@ Content width
 
 Image features
 
-- [ ] Default image sizing.
+- [x] Default image sizing.
 - [ ] Wide images.
 - [ ] Full-width images.
 - [ ] Image grids.
-- [ ] Image captions.
+- [x] Image captions.
 - [ ] Image borders.
 - [ ] Optional image filters.
 
