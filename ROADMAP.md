@@ -455,9 +455,6 @@ Typography controls
 
 - [ ] Body font.
 - [ ] Heading font.
-- [ ] Interface font.
-- [ ] Monospace font.
-- [ ] Body font size.
 - [ ] Sidebar font size.
 - [ ] Line height.
 
