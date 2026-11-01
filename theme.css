@@ -236,7 +236,7 @@ hr {
   --font-editor:
     var(
       --font-editor-override,
-      var(--font-text-override, var(--font-text))
+      var(--font-interface-override, var(--font-interface))
     );
   /* Semantic aliases for internal Kanso Matcha use. */
   --km-font-interface: var(--font-interface);
