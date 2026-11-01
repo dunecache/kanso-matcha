@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "sass --watch styles/index.scss:theme.css --style=expanded --no-source-map",
     "build": "sass --no-source-map styles/index.scss:theme.css --style=expanded",
+    "fonts": "python3 scripts/generate-fonts.py",
     "validate": "stylelint \"styles/**/*.scss\" \"theme.css\""
   },
   "devDependencies": {

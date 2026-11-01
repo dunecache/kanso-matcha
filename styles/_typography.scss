@@ -6,11 +6,26 @@
  */
 
 :root {
-  /* Font stacks (system fallbacks; no bundled fonts without licensing). */
-  --km-font-interface: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, sans-serif;
-  --km-font-text: Georgia, "Times New Roman", serif;
-  --km-font-mono: "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
+  /* Font stacks — set only via Obsidian's -theme variables. */
+  --font-interface-theme: "IBM Plex Sans", "IBM Plex Sans Arabic",
+    -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-text-theme: "Literata", Georgia, "Noto Naskh Arabic", serif;
+  --font-monospace-theme: "IBM Plex Mono", ui-monospace, Menlo, Consolas,
+    monospace;
+
+  /* Semantic aliases (do not redefine the Obsidian variables above). */
+  --km-font-interface: var(--font-interface-theme);
+  --km-font-text: var(--font-text-theme);
+  --km-font-mono: var(--font-monospace-theme);
+
+  /* Heading/inline-title fonts (all use the text face). */
+  --inline-title-font: var(--font-text-theme);
+  --h1-font: var(--font-text-theme);
+  --h2-font: var(--font-text-theme);
+  --h3-font: var(--font-text-theme);
+  --h4-font: var(--font-text-theme);
+  --h5-font: var(--font-text-theme);
+  --h6-font: var(--font-text-theme);
 
   /* Base rhythm */
   --km-font-size-base: 16px;
@@ -64,5 +79,10 @@ body {
 
 .cm-line,
 .cm-content {
+  max-width: var(--km-content-width);
+}
+
+/* Content width */
+.markdown-reading-view {
   max-width: var(--km-content-width);
 }

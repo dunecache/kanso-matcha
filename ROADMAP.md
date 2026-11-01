@@ -267,6 +267,7 @@ Typography
 - [x] Paragraph spacing.
 - [x] Heading spacing.
 - [x] Sidebar font sizing.
+- [x] Bundled fonts (Inter + Literata + IBM Plex Mono, base64-embedded Latin woff2).
 
 Reading View
 
@@ -383,9 +384,11 @@ Phase 6 — Minimal-Inspired Layout Features
 
 Goal: Preserve Minimal's practical strengths.
 
+> **Phase 6 status:** §Content width in progress (§Normal line width implemented via --km-content-width; wide, maximum, full-width and responsive content width pending).
+
 Content width
 
-- [ ] Normal line width.
+- [x] Normal line width.
 - [ ] Wide line width.
 - [ ] Maximum line width.
 - [ ] Full-width content.
