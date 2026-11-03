@@ -1,6 +1,135 @@
 /*
- * Kanso Matcha — Mobile
+ * Kanso Matcha — Mobile and Tablet
  *
- * Phase 1: placeholder for mobile module.
- * Phase 8 will implement mobile-first overrides.
+ * Phase 8: mobile workspace, content and touch-interaction styling.
+ * The mobile experience is designed independently, not as a compressed desktop
+ * layout — full-width content, larger touch targets and safe-area padding.
  */
+
+/* Mobile workspace */
+.is-mobile .workspace-drawer,
+.is-mobile .side-dock-ribbon,
+.is-mobile .workspace-drawer.mod-left,
+.is-mobile .workspace-drawer.mod-right {
+  background-color: var(--km-surface);
+}
+
+.is-mobile .workspace-drawer-header {
+  border-bottom: 1px solid var(--km-border);
+}
+
+.is-mobile .side-dock-ribbon.mod-left {
+  border-right: 1px solid var(--km-border);
+  padding-left: env(safe-area-inset-left, 0px);
+}
+
+.is-mobile .side-dock-ribbon.mod-right {
+  border-left: 1px solid var(--km-border);
+  padding-right: env(safe-area-inset-right, 0px);
+}
+
+/* Bottom toolbar */
+.is-mobile .mobile-toolbar {
+  background-color: var(--km-surface);
+  border-top: 1px solid var(--km-border);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+.is-mobile .mobile-toolbar-option {
+  min-height: 44px;
+  color: var(--km-fg-muted);
+}
+
+.is-mobile .mobile-toolbar-option.is-active {
+  color: var(--km-fg);
+}
+
+/* Tab navigation */
+.is-mobile .workspace-tab-header {
+  max-width: 100%;
+}
+
+/* Mobile status elements */
+.is-mobile .status-bar {
+  border-top: 1px solid var(--km-border);
+  padding: 0 var(--km-space-2) env(safe-area-inset-bottom, 0px);
+  font-size: 0.8rem;
+}
+
+/* Modals */
+.is-mobile .modal {
+  width: 100%;
+  border-radius: 0;
+}
+
+/* Menus */
+.is-mobile .menu {
+  border-radius: var(--km-radius-md);
+}
+
+.is-mobile .menu-item {
+  min-height: 44px;
+}
+
+/* Popovers */
+.is-mobile .popover {
+  border: 1px solid var(--km-border);
+  border-radius: var(--km-radius-md);
+}
+
+/* Mobile content */
+.is-mobile .markdown-reading-view {
+  max-width: none;
+  padding: 0 var(--km-space-4);
+}
+
+.is-mobile .markdown-reading-view pre {
+  font-size: 0.8125rem;
+  padding: var(--km-space-2);
+}
+
+.is-mobile .markdown-reading-view table {
+  font-size: 0.875rem;
+}
+
+.is-mobile .markdown-reading-view table th,
+.is-mobile .markdown-reading-view table td {
+  padding: var(--km-space-1) var(--km-space-2);
+}
+
+.is-mobile .markdown-reading-view .katex-display {
+  overflow-x: auto;
+}
+
+.is-mobile .markdown-reading-view .callout {
+  padding: var(--km-space-2) var(--km-space-3);
+}
+
+.is-mobile .markdown-reading-view .markdown-embed {
+  margin: var(--km-space-2) 0;
+}
+
+.is-mobile img {
+  border-radius: var(--km-radius-md);
+}
+
+.is-mobile .metadata {
+  font-size: 0.875rem;
+}
+
+/* Touch interaction */
+.is-mobile .clickable-icon {
+  min-width: 44px;
+  min-height: 44px;
+}
+
+.is-mobile .nav-file.is-hoverable:active,
+.is-mobile .nav-folder.is-hoverable:active,
+.is-mobile .workspace-tab-header:active,
+.is-mobile .menu-item:active {
+  background-color: var(--km-soft);
+}
+
+.is-mobile {
+  overscroll-behavior: contain;
+}

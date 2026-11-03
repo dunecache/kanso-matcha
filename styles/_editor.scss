@@ -74,25 +74,40 @@
 /* Syntax highlighting marks */
 .cm-editor .cm-keyword,
 .cm-editor .cm-atom {
-  color: var(--km-clay);
+  color: var(--km-syntax-keyword);
 }
 
-.cm-editor .cm-string,
-.cm-editor .cm-number,
-.cm-editor .cm-def,
+.cm-editor .cm-string {
+  color: var(--km-syntax-string);
+}
+
+.cm-editor .cm-number {
+  color: var(--km-syntax-number);
+}
+
+.cm-editor .cm-def {
+  color: var(--km-syntax-function);
+}
+
 .cm-editor .cm-property {
-  color: var(--km-sage);
+  color: var(--km-syntax-property);
 }
 
 .cm-editor .cm-comment,
 .cm-editor .cm-meta {
-  color: var(--km-fg-muted);
+  color: var(--km-syntax-comment);
 }
 
-.cm-editor .cm-variable,
-.cm-editor .cm-punctuation,
+.cm-editor .cm-variable {
+  color: var(--km-syntax-default);
+}
+
+.cm-editor .cm-punctuation {
+  color: var(--km-syntax-punctuation);
+}
+
 .cm-editor .cm-operator {
-  color: var(--km-fg);
+  color: var(--km-syntax-operator);
 }
 
 .cm-activeLine {

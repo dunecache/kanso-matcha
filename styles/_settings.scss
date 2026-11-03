@@ -1,0 +1,508 @@
+/*
+ * Kanso Matcha — Style Settings
+ *
+ * Phase 7: `@settings` definitions for the Style Settings plugin, plus the
+ * appearance class rules referenced by class-select / class-toggle settings.
+ * The theme works without the plugin — every setting falls back to the
+ * defaults declared in _tokens / _typography.
+ */
+
+/* @settings
+
+name: Kanso Matcha
+id: kanso-matcha
+settings:
+    -
+        id: km-heading-color-controls
+        title: Color
+        type: heading
+        level: 2
+    -
+        id: km-accent-intensity
+        title: Accent intensity
+        description: Adjusts the strength of the matcha accent colors.
+        type: class-select
+        default: km-accent-default
+        options:
+            -
+                label: Subtle
+                value: km-accent-subtle
+            -
+                label: Default
+                value: km-accent-default
+            -
+                label: Vivid
+                value: km-accent-vivid
+    -
+        id: km-bg-light
+        title: Background color (Morning Matcha)
+        description: Main background of the light theme.
+        type: variable-color
+        format: hex
+        default: '#f3f1e9'
+    -
+        id: km-bg-dark
+        title: Background color (Evening Zen)
+        description: Main background of the dark theme.
+        type: variable-color
+        format: hex
+        default: '#22251f'
+    -
+        id: km-surface-light
+        title: Surface color (Morning Matcha)
+        type: variable-color
+        format: hex
+        default: '#e8e5da'
+    -
+        id: km-surface-dark
+        title: Surface color (Evening Zen)
+        type: variable-color
+        format: hex
+        default: '#2d3129'
+    -
+        id: km-matcha-light
+        title: Accent color (Morning Matcha)
+        type: variable-color
+        format: hex
+        default: '#89977a'
+    -
+        id: km-matcha-dark
+        title: Accent color (Evening Zen)
+        type: variable-color
+        format: hex
+        default: '#a3ae91'
+    -
+        id: km-link-light
+        title: Link color (Morning Matcha)
+        type: variable-color
+        format: hex
+        default: '#48676b'
+    -
+        id: km-link-dark
+        title: Link color (Evening Zen)
+        type: variable-color
+        format: hex
+        default: '#9cb8ba'
+    -
+        id: km-border-light
+        title: Border color (Morning Matcha)
+        type: variable-color
+        format: hex
+        default: '#d5d0c2'
+    -
+        id: km-border-dark
+        title: Border color (Evening Zen)
+        type: variable-color
+        format: hex
+        default: '#41463b'
+    -
+        id: km-border-strong-light
+        title: Strong border color (Morning Matcha)
+        type: variable-color
+        format: hex
+        default: '#827e74'
+    -
+        id: km-border-strong-dark
+        title: Strong border color (Evening Zen)
+        type: variable-color
+        format: hex
+        default: '#83877f'
+    -
+        id: km-heading-color-light
+        title: Heading color (Morning Matcha)
+        type: variable-color
+        format: hex
+        default: '#34382f'
+    -
+        id: km-heading-color-dark
+        title: Heading color (Evening Zen)
+        type: variable-color
+        format: hex
+        default: '#e8e5d9'
+    -
+        id: km-heading-typography-controls
+        title: Typography
+        type: heading
+        level: 2
+    -
+        id: km-font-text
+        title: Body font
+        description: Font used for Markdown body text.
+        type: variable-select
+        default: 'Georgia, "Times New Roman", serif'
+        options:
+            -
+                label: Georgia (serif)
+                value: 'Georgia, "Times New Roman", serif'
+            -
+                label: Palatino (serif)
+                value: 'Palatino, "Palatino Linotype", Georgia, serif'
+            -
+                label: System sans
+                value: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
+    -
+        id: km-font-heading
+        title: Heading font
+        description: Font used for Markdown headings.
+        type: variable-select
+        default: 'Georgia, "Times New Roman", serif'
+        options:
+            -
+                label: Georgia (serif)
+                value: 'Georgia, "Times New Roman", serif'
+            -
+                label: System sans
+                value: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
+            -
+                label: Monospace
+                value: '"SF Mono", "JetBrains Mono", Menlo, Consolas, monospace'
+    -
+        id: km-font-size-sidebar
+        title: Sidebar font size
+        type: variable-select
+        default: '0.875rem'
+        options:
+            -
+                label: Small
+                value: '0.8125rem'
+            -
+                label: Default
+                value: '0.875rem'
+            -
+                label: Large
+                value: '1rem'
+    -
+        id: km-line-height
+        title: Line height
+        type: variable-number-slider
+        default: 1.65
+        min: 1.4
+        max: 2
+        step: 0.05
+    -
+        id: km-heading-workspace-controls
+        title: Workspace
+        type: heading
+        level: 2
+    -
+        id: km-sidebar-appearance
+        title: Sidebar appearance
+        type: class-select
+        default: km-sidebar-subtle
+        options:
+            -
+                label: Subtle
+                value: km-sidebar-subtle
+            -
+                label: Seamless
+                value: km-sidebar-seamless
+            -
+                label: Elevated
+                value: km-sidebar-elevated
+    -
+        id: km-tab-appearance
+        title: Tab appearance
+        type: class-select
+        default: km-tabs-default
+        options:
+            -
+                label: Default
+                value: km-tabs-default
+            -
+                label: Underlined
+                value: km-tabs-underlined
+    -
+        id: km-workspace-borders
+        title: Workspace borders
+        type: class-select
+        default: km-borders-default
+        options:
+            -
+                label: Default
+                value: km-borders-default
+            -
+                label: Hidden
+                value: km-borders-hidden
+            -
+                label: Strong
+                value: km-borders-strong
+    -
+        id: km-content-width-input
+        title: Content width
+        type: variable-select
+        default: '68ch'
+        options:
+            -
+                label: Narrow
+                value: '56ch'
+            -
+                label: Normal
+                value: '62ch'
+            -
+                label: Wide
+                value: '68ch'
+            -
+                label: Maximum
+                value: '76ch'
+            -
+                label: Full width
+                value: 'none'
+    -
+        id: km-compact
+        title: Compact appearance
+        description: Reduces vertical rhythm and padding across the interface.
+        type: class-toggle
+        default: false
+    -
+        id: km-heading-markdown-controls
+        title: Markdown
+        type: heading
+        level: 2
+    -
+        id: km-callout-style
+        title: Callout style
+        type: class-select
+        default: km-callout-soft
+        options:
+            -
+                label: Soft
+                value: km-callout-soft
+            -
+                label: Tinted
+                value: km-callout-tinted
+            -
+                label: Outlined
+                value: km-callout-outlined
+    -
+        id: km-checkbox-style
+        title: Checkbox style
+        type: class-select
+        default: km-checkbox-matcha
+        options:
+            -
+                label: Matcha
+                value: km-checkbox-matcha
+            -
+                label: Sage
+                value: km-checkbox-sage
+            -
+                label: Clay
+                value: km-checkbox-clay
+            -
+                label: Success green
+                value: km-checkbox-success
+    -
+        id: km-table-style
+        title: Table style
+        type: class-select
+        default: km-table-default
+        options:
+            -
+                label: Default
+                value: km-table-default
+            -
+                label: Striped
+                value: km-table-striped
+            -
+                label: Minimal
+                value: km-table-minimal
+    -
+        id: km-code-style
+        title: Code block style
+        type: class-select
+        default: km-code-default
+        options:
+            -
+                label: Default
+                value: km-code-default
+            -
+                label: Compact
+                value: km-code-compact
+            -
+                label: Flat
+                value: km-code-flat
+    -
+        id: km-link-underline
+        title: Underline links
+        type: class-toggle
+        default: false
+    -
+        id: km-heading-style
+        title: Heading style
+        type: class-select
+        default: km-headings-default
+        options:
+            -
+                label: Default
+                value: km-headings-default
+            -
+                label: Accent bar
+                value: km-headings-bar
+            -
+                label: Underlined
+                value: km-headings-underlined
+
+*/
+
+/* Accent intensity overrides */
+body.km-accent-subtle {
+  --km-matcha: #aab49a;
+}
+
+body.km-accent-subtle.theme-dark {
+  --km-matcha: #858f76;
+}
+
+body.km-accent-vivid {
+  --km-matcha: #5c664a;
+}
+
+body.km-accent-vivid.theme-dark {
+  --km-matcha: #c1ccac;
+}
+
+/* Sidebar appearance */
+body.km-sidebar-seamless .workspace-split.mod-left-split,
+body.km-sidebar-seamless .workspace-split.mod-right-split {
+  background-color: var(--km-bg);
+}
+
+body.km-sidebar-elevated .workspace-split.mod-left-split,
+body.km-sidebar-elevated .workspace-split.mod-right-split {
+  background-color: var(--km-elevated);
+}
+
+/* Tab appearance */
+body.km-tabs-underlined .workspace-tab-header.is-active {
+  box-shadow: inset 0 -2px 0 var(--km-focus);
+}
+
+/* Workspace borders */
+body.km-borders-hidden .workspace-split,
+body.km-borders-hidden .workspace-leaf-container,
+body.km-borders-hidden .workspace-tab-container {
+  border: 0;
+}
+
+body.km-borders-strong .workspace-split,
+body.km-borders-strong .workspace-leaf-container,
+body.km-borders-strong .workspace-tab-container {
+  border: 2px solid var(--km-border);
+}
+
+/* Compact appearance */
+body.km-compact .markdown-reading-view table th,
+body.km-compact .markdown-reading-view table td,
+body.km-compact .markdown-preview table th,
+body.km-compact .markdown-preview table td {
+  padding: var(--km-space-1) var(--km-space-2);
+}
+
+body.km-compact .markdown-reading-view .callout,
+body.km-compact .markdown-preview .callout {
+  padding: var(--km-space-2) var(--km-space-3);
+}
+
+body.km-compact .markdown-reading-view pre,
+body.km-compact .markdown-preview pre {
+  padding: var(--km-space-2);
+}
+
+/* Callout styles */
+body.km-callout-outlined .markdown-reading-view .callout,
+body.km-callout-outlined .markdown-preview .callout {
+  background-color: transparent;
+  border: 1px solid var(--km-border);
+  border-left: 2px solid var(--km-clay);
+}
+
+body.km-callout-tinted .markdown-reading-view .callout,
+body.km-callout-tinted .markdown-preview .callout {
+  background-color: var(--km-soft);
+}
+
+/* Checkbox styles */
+body.km-checkbox-sage .markdown-reading-view input[type="checkbox"],
+body.km-checkbox-sage .markdown-preview input[type="checkbox"] {
+  accent-color: var(--km-sage);
+}
+
+body.km-checkbox-clay .markdown-reading-view input[type="checkbox"],
+body.km-checkbox-clay .markdown-preview input[type="checkbox"] {
+  accent-color: var(--km-clay);
+}
+
+body.km-checkbox-success .markdown-reading-view input[type="checkbox"],
+body.km-checkbox-success .markdown-preview input[type="checkbox"] {
+  accent-color: var(--km-success);
+}
+
+/* Table styles */
+body.km-table-striped .markdown-reading-view tbody tr:nth-child(even),
+body.km-table-striped .markdown-preview tbody tr:nth-child(even) {
+  background-color: var(--km-soft);
+}
+
+body.km-table-minimal .markdown-reading-view th,
+body.km-table-minimal .markdown-reading-view td,
+body.km-table-minimal .markdown-preview th,
+body.km-table-minimal .markdown-preview td {
+  border: 0;
+  border-bottom: 1px solid var(--km-border);
+}
+
+body.km-table-minimal .markdown-reading-view th,
+body.km-table-minimal .markdown-preview th {
+  border-bottom: 1px solid var(--km-border-strong);
+}
+
+/* Code block styles */
+body.km-code-compact .markdown-reading-view pre,
+body.km-code-compact .markdown-preview pre {
+  padding: var(--km-space-2);
+  font-size: 0.9em;
+}
+
+body.km-code-flat .markdown-reading-view pre,
+body.km-code-flat .markdown-preview pre {
+  background-color: var(--km-bg);
+  border: 0;
+}
+
+/* Link underline */
+body.km-link-underline .markdown-reading-view a,
+body.km-link-underline .markdown-preview a {
+  text-decoration: underline;
+}
+
+/* Heading styles */
+body.km-headings-bar .markdown-reading-view h1,
+body.km-headings-bar .markdown-preview h1,
+body.km-headings-bar .markdown-reading-view h2,
+body.km-headings-bar .markdown-preview h2,
+body.km-headings-bar .markdown-reading-view h3,
+body.km-headings-bar .markdown-preview h3,
+body.km-headings-bar .markdown-reading-view h4,
+body.km-headings-bar .markdown-preview h4,
+body.km-headings-bar .markdown-reading-view h5,
+body.km-headings-bar .markdown-preview h5,
+body.km-headings-bar .markdown-reading-view h6,
+body.km-headings-bar .markdown-preview h6 {
+  border-left: 2px solid var(--km-matcha);
+  padding-left: 0.4em;
+}
+
+body.km-headings-underlined .markdown-reading-view h1,
+body.km-headings-underlined .markdown-preview h1,
+body.km-headings-underlined .markdown-reading-view h2,
+body.km-headings-underlined .markdown-preview h2,
+body.km-headings-underlined .markdown-reading-view h3,
+body.km-headings-underlined .markdown-preview h3,
+body.km-headings-underlined .markdown-reading-view h4,
+body.km-headings-underlined .markdown-preview h4,
+body.km-headings-underlined .markdown-reading-view h5,
+body.km-headings-underlined .markdown-preview h5,
+body.km-headings-underlined .markdown-reading-view h6,
+body.km-headings-underlined .markdown-preview h6 {
+  box-shadow: 0 1px 0 var(--km-border);
+}

@@ -24,13 +24,24 @@ Both modes share the same semantic design language.
 | `--km-bg` | `#F3F1E9` | Base background (paper) |
 | `--km-surface` | `#E8E5DA` | Workspace / panel surface |
 | `--km-elevated` | `#FAF9F4` | Elevated surface (cards, modals, overlays) |
+| `--km-sunken` | `#E2DED2` | Sunken surface (code backgrounds) |
+| `--km-soft` | `#DCE2D1` | Soft highlight / surface-accent (selected surfaces, washes) |
 | `--km-fg` | `#34382F` | Primary text |
-| `--km-fg-muted` | `#77796D` | Secondary / muted text |
-| `--km-matcha` | `#89977A` | Primary accent (matcha) |
+| `--km-fg-muted` | `#616359` | Secondary / muted text |
+| `--km-matcha` | `#89977A` | Primary accent (matcha) — DECORATIVE ONLY |
+| `--km-accent-strong` | `#5C664A` | Accessible accent (text, checkboxes, active tab) |
 | `--km-sage` | `#AAB49A` | Secondary accent (sage) |
 | `--km-clay` | `#B68E78` | Tertiary accent (warm clay) |
-| `--km-soft` | `#DCE2D1` | Soft highlight (selected surfaces, washes) |
+| `--km-selection` | `#DCE2D1` | Selection |
+| `--km-focus` | `#626D4F` | Focus ring |
 | `--km-border` | `#D5D0C2` | Hairlines / separators |
+| `--km-border-strong` | `#827E74` | Essential boundaries (inputs, active tab edges) |
+| `--km-link` | `#48676B` | Links (info domain) |
+| `--km-link-active` | `#5C664A` | Link hover/active (accent-strong) |
+| `--km-success` | `#5C664A` | Success status |
+| `--km-warning` | `#795E2C` | Warning status |
+| `--km-danger` | `#944E47` | Danger status |
+| `--km-info` | `#48676B` | Info status |
 
 ---
 
@@ -41,13 +52,24 @@ Both modes share the same semantic design language.
 | `--km-bg` | `#22251F` | Base background (deep warm charcoal) |
 | `--km-surface` | `#2D3129` | Workspace / panel surface |
 | `--km-elevated` | `#363A31` | Elevated surface (cards, modals, overlays) |
+| `--km-sunken` | `#1C1F1A` | Sunken surface (code backgrounds) |
+| `--km-soft` | `#41483A` | Soft highlight / surface-accent (selected surfaces, washes) |
 | `--km-fg` | `#E8E5D9` | Primary text |
-| `--km-fg-muted` | `#AAA99B` | Secondary / muted text |
-| `--km-matcha` | `#A3AE91` | Primary accent (matcha) |
+| `--km-fg-muted` | `#B5B5A9` | Secondary / muted text |
+| `--km-matcha` | `#A3AE91` | Primary accent (matcha) — DECORATIVE ONLY |
+| `--km-accent-strong` | `#C1CCAC` | Accessible accent (text, checkboxes, active tab) |
 | `--km-sage` | `#858F76` | Secondary accent (sage) |
 | `--km-clay` | `#B58E79` | Tertiary accent (warm clay) |
-| `--km-soft` | `#41483A` | Soft highlight (selected surfaces, washes) |
+| `--km-selection` | `#41483A` | Selection |
+| `--km-focus` | `#A3AE91` | Focus ring |
 | `--km-border` | `#41463B` | Hairlines / separators |
+| `--km-border-strong` | `#83877F` | Essential boundaries (inputs, active tab edges) |
+| `--km-link` | `#9CB8BA` | Links (info domain) |
+| `--km-link-active` | `#C1CCAC` | Link hover/active (accent-strong) |
+| `--km-success` | `#C1CCAC` | Success status |
+| `--km-warning` | `#D2B477` | Warning status |
+| `--km-danger` | `#E1A59C` | Danger status (bright terracotta) |
+| `--km-info` | `#9CB8BA` | Info status |
 
 ---
 

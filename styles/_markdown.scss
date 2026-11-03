@@ -4,7 +4,7 @@
  * Phase 1: minimal markdown surface foundation (backgrounds, base typography).
  * Phase 4: reading-view content styles (blockquotes, lists, horizontal rules).
  * Phase 5: headings, typography, lists, tables, callouts, code, math, embeds.
- * Phase 6: image features (default sizing, captions).
+ * Phase 6: image features, tables and embeds, cards and helpers.
  */
 
 .markdown-reading-view,
@@ -29,7 +29,7 @@
 .markdown-source-view.mod-markdown blockquote,
 .markdown-preview blockquote {
   background-color: var(--km-soft);
-  border-left: 2px solid var(--km-clay);
+  border-left: 2px solid var(--km-sage);
   color: var(--km-fg-muted);
 }
 
@@ -63,7 +63,7 @@
 .markdown-preview :not(pre) > code {
   font-family: var(--km-font-mono);
   font-size: 0.875em;
-  background-color: var(--km-soft);
+  background-color: var(--km-sunken);
   color: var(--km-fg);
   padding: 0.1em 0.35em;
   border-radius: var(--km-radius-sm);
@@ -72,7 +72,7 @@
 /* Code blocks */
 .markdown-reading-view pre,
 .markdown-preview pre {
-  background-color: var(--km-surface);
+  background-color: var(--km-sunken);
   border: 1px solid var(--km-border);
   border-radius: var(--km-radius-md);
   padding: var(--km-space-3);
@@ -120,4 +120,108 @@
   font-size: 0.875rem;
   text-align: center;
   margin-top: var(--km-space-2);
+}
+
+/* Layout helpers: wide and full-width media */
+.markdown-reading-view .km-wide,
+.markdown-preview .km-wide {
+  width: calc(100% + 2 * var(--km-space-5));
+  margin-left: calc(-1 * var(--km-space-5));
+}
+
+.markdown-reading-view .km-full-width,
+.markdown-preview .km-full-width {
+  width: 100%;
+  max-width: none;
+}
+
+/* Image borders */
+.markdown-reading-view .km-bordered img,
+.markdown-preview .km-bordered img {
+  border: 1px solid var(--km-border);
+  border-radius: var(--km-radius-sm);
+}
+
+/* Optional image filters */
+.markdown-reading-view .km-filter img,
+.markdown-preview .km-filter img {
+  filter: saturate(0.9) brightness(1.02);
+}
+
+/* Image grid */
+.markdown-reading-view .km-grid,
+.markdown-preview .km-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: var(--km-space-3);
+}
+
+.markdown-reading-view .km-grid img,
+.markdown-preview .km-grid img {
+  width: 100%;
+}
+
+/* Tables: width and compact helpers */
+.markdown-reading-view table.km-wide,
+.markdown-preview table.km-wide {
+  width: calc(100% + 2 * var(--km-space-5));
+  margin-left: calc(-1 * var(--km-space-5));
+}
+
+.markdown-reading-view table.km-full-width,
+.markdown-preview table.km-full-width {
+  width: 100%;
+}
+
+.markdown-reading-view table.km-compact th,
+.markdown-reading-view table.km-compact td,
+.markdown-preview table.km-compact th,
+.markdown-preview table.km-compact td {
+  padding: var(--km-space-1) var(--km-space-2);
+}
+
+/* Table wrapping */
+.markdown-reading-view .table-wrapper,
+.markdown-preview .table-wrapper {
+  overflow-x: auto;
+}
+
+/* Embeds and transclusions */
+.markdown-reading-view .markdown-embed,
+.markdown-preview .markdown-embed {
+  background-color: var(--km-surface);
+  border-radius: var(--km-radius-md);
+  padding: var(--km-space-3) var(--km-space-4);
+}
+
+.markdown-reading-view .markdown-embed.seamless,
+.markdown-preview .markdown-embed.seamless {
+  background-color: transparent;
+  padding: 0;
+}
+
+.markdown-reading-view .markdown-embed .embed-title,
+.markdown-preview .markdown-embed .embed-title {
+  color: var(--km-fg-muted);
+  font-size: 0.875rem;
+}
+
+/* Cards */
+.markdown-reading-view .km-card,
+.markdown-preview .km-card {
+  background-color: var(--km-surface);
+  border-radius: var(--km-radius-md);
+  padding: var(--km-space-4);
+}
+
+.markdown-reading-view .km-cards,
+.markdown-preview .km-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: var(--km-space-4);
+}
+
+.markdown-reading-view .km-cards .km-card img,
+.markdown-preview .km-cards .km-card img {
+  border-radius: var(--km-radius-sm);
 }

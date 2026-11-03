@@ -1,39 +1,106 @@
 /*
  * Kanso Matcha — Design Tokens
  *
- * Phase 0 deliverable: docs/DESIGN-SYSTEM.md
- * Phase 1 status: initial semantic token layer established.
- * Phase 2 status: Morning Matcha (light) and Evening Zen (dark) token sets complete.
+ * Source of truth: ~/kanso_design_system (canonical v1.2, accessibility-corrected).
+ * These values mirror tokens/primitives/*.json + tokens/semantic/*.json.
+ *
+ * Rules carried over from the design system:
+ *  - accent-primary (--km-matcha) is DECORATIVE ONLY — never use it for
+ *    text; use --km-accent-strong for accessible accent text.
+ *  - status text on dark surfaces uses the bright family variant (e.g.
+ *    danger = #E1A59C).
+ *  - links: link = info domain, link-active = accent-strong.
+ *  - quote-border = accent-secondary (sage).
+ *  - code-bg = surface-sunken.
  */
 
 :root {
-  /* Morning Matcha (light) */
-  --km-bg: #f3f1e9;
-  --km-surface: #e8e5da;
+  /* Surfaces */
+  --km-bg: var(--km-bg-light, #f3f1e9);
+  --km-surface: var(--km-surface-light, #e8e5da);
   --km-elevated: #faf9f4;
+  --km-sunken: #e2ded2;
+  --km-soft: #dce2d1;          /* surface-accent */
+  /* Typography */
   --km-fg: #34382f;
-  --km-fg-muted: #636a49;
-  --km-matcha: #89977a;
-  --km-sage: #aab49a;
+  --km-fg-muted: #616359;
+  /* Accents */
+  --km-matcha: var(--km-matcha-light, #89977a);   /* accent-primary (decorative only) */
+  --km-accent-strong: #5c664a;                     /* accessible accent */
+  --km-sage: #aab49a;                              /* accent-secondary */
   --km-clay: #b68e78;
-  --km-soft: #dce2d1;
-  --km-link: #61705a;
+  /* Selection / focus */
   --km-selection: #dce2d1;
-  --km-focus: #61705a;
-  --km-border: #d5d0c2;
-  --km-border-strong: #c9c2ae;
-  --km-red: #b0563f;
-  --km-orange: #b07a4a;
-  --km-yellow: #a08b4f;
-  --km-green: #7d8f63;
-  --km-cyan: #5f8078;
-  --km-blue: #6b7f94;
-  --km-purple: #8a7a96;
-  --km-pink: #a97a84;
-  --km-success: #7d8f63;
-  --km-warning: #a08b4f;
-  --km-danger: #b0563f;
-  --km-info: #6b7f94;
+  --km-focus: #626d4f;
+  /* Borders */
+  --km-border: var(--km-border-light, #d5d0c2);
+  --km-border-strong: var(--km-border-strong-light, #827e74);
+  /* Links */
+  --km-link: var(--km-link-light, #48676b);       /* info domain */
+  --km-link-active: #5c664a;                      /* accent-strong */
+  /* Status */
+  --km-success: #5c664a;
+  --km-warning: #795e2c;
+  --km-danger: #944e47;
+  --km-info: #48676b;
+  /* Palette (syntax/terminal families) */
+  --km-red: #9a514a;
+  --km-orange: #9a6c43;
+  --km-yellow: #80642f;
+  --km-green: #626d4f;
+  --km-cyan: #55756a;
+  --km-blue: #4f7075;
+  --km-purple: #79658b;
+  --km-pink: #925f50;
+  /* Syntax (morning-matcha) */
+  --km-syntax-default: #34382f;
+  --km-syntax-comment: #77796d;
+  --km-syntax-keyword: #79658b;
+  --km-syntax-function: #626d4f;
+  --km-syntax-method: #55756a;
+  --km-syntax-string: #8a6654;
+  --km-syntax-number: #9a6c43;
+  --km-syntax-constant: #925f50;
+  --km-syntax-type: #4f7075;
+  --km-syntax-property: #686a5f;
+  --km-syntax-operator: #77796d;
+  --km-syntax-punctuation: #77796d;
+  --km-syntax-tag: #626d4f;
+  --km-syntax-attribute: #79658b;
+  --km-syntax-regexp: #925f50;
+  --km-syntax-escape: #80642f;
+  /* Diff (morning-matcha) */
+  --km-diff-added: #5c664a;
+  --km-diff-added-bg: #dce2d1;
+  --km-diff-removed: #914b45;
+  --km-diff-removed-bg: #ead8d2;
+  --km-diff-changed: #795e2c;
+  --km-diff-changed-bg: #eee5d0;
+  /* Charts (morning-matcha) */
+  --km-chart-1: #626d4f;
+  --km-chart-2: #4f7075;
+  --km-chart-3: #8a6654;
+  --km-chart-4: #79658b;
+  --km-chart-5: #80642f;
+  --km-chart-6: #55756a;
+  --km-chart-7: #925f50;
+  /* Terminal (morning-matcha) */
+  --km-term-black: #34382f;
+  --km-term-red: #9a514a;
+  --km-term-green: #626d4f;
+  --km-term-yellow: #80642f;
+  --km-term-blue: #4f7075;
+  --km-term-magenta: #79658b;
+  --km-term-cyan: #55756a;
+  --km-term-white: #e8e5da;
+  --km-term-bright-black: #77796d;
+  --km-term-bright-red: #b87970;
+  --km-term-bright-green: #89977a;
+  --km-term-bright-yellow: #b69a65;
+  --km-term-bright-blue: #819ba0;
+  --km-term-bright-magenta: #9a8aae;
+  --km-term-bright-cyan: #8ba99b;
+  --km-term-bright-white: #faf9f4;
 
   /* Spacing */
   --km-space-1: 0.25rem;
@@ -53,31 +120,90 @@
 }
 
 .theme-dark {
-  /* Evening Zen (dark) */
-  --km-bg: #22251f;
-  --km-surface: #2d3129;
+  /* Surfaces */
+  --km-bg: var(--km-bg-dark, #22251f);
+  --km-surface: var(--km-surface-dark, #2d3129);
   --km-elevated: #363a31;
+  --km-sunken: #1c1f1a;
+  --km-soft: #41483a;          /* surface-accent */
+  /* Typography */
   --km-fg: #e8e5d9;
-  --km-fg-muted: #aaa99b;
-  --km-matcha: #a3ae91;
-  --km-sage: #858f76;
+  --km-fg-muted: #b5b5a9;
+  /* Accents */
+  --km-matcha: var(--km-matcha-dark, #a3ae91);   /* accent-primary (decorative only) */
+  --km-accent-strong: #c1ccac;                    /* accessible accent */
+  --km-sage: #858f76;                             /* accent-secondary */
   --km-clay: #b58e79;
-  --km-soft: #41483a;
-  --km-link: #a3ae91;
+  /* Selection / focus */
   --km-selection: #41483a;
   --km-focus: #a3ae91;
-  --km-border: #41463b;
-  --km-border-strong: #4d5146;
-  --km-red: #cf7a63;
-  --km-orange: #cf9060;
-  --km-yellow: #c9a25e;
-  --km-green: #a3b58f;
-  --km-cyan: #8fb3a8;
-  --km-blue: #9aa8bd;
-  --km-purple: #b3a3c0;
-  --km-pink: #c49aac;
-  --km-success: #a3b58f;
-  --km-warning: #c9a25e;
-  --km-danger: #cf7a63;
-  --km-info: #9aa8bd;
+  /* Borders */
+  --km-border: var(--km-border-dark, #41463b);
+  --km-border-strong: var(--km-border-strong-dark, #83877f);
+  /* Links */
+  --km-link: var(--km-link-dark, #9cb8ba);       /* info domain */
+  --km-link-active: #c1ccac;                     /* accent-strong */
+  /* Status */
+  --km-success: #c1ccac;
+  --km-warning: #d2b477;
+  --km-danger: #e1a59c;
+  --km-info: #9cb8ba;
+  /* Palette (syntax/terminal families) */
+  --km-red: #d28b80;
+  --km-orange: #d2ac7d;
+  --km-yellow: #d2b477;
+  --km-green: #a3ae91;
+  --km-cyan: #9bbbaa;
+  --km-blue: #9cb8ba;
+  --km-purple: #b5a4c8;
+  --km-pink: #d28b80;
+  /* Syntax (evening-zen) */
+  --km-syntax-default: #e8e5d9;
+  --km-syntax-comment: #85877b;
+  --km-syntax-keyword: #b5a4c8;
+  --km-syntax-function: #a3ae91;
+  --km-syntax-method: #9bbbaa;
+  --km-syntax-string: #d0a78f;
+  --km-syntax-number: #d2ac7d;
+  --km-syntax-constant: #d28b80;
+  --km-syntax-type: #9cb8ba;
+  --km-syntax-property: #c9c6b8;
+  --km-syntax-operator: #aaa99b;
+  --km-syntax-punctuation: #aaa99b;
+  --km-syntax-tag: #a3ae91;
+  --km-syntax-attribute: #b5a4c8;
+  --km-syntax-regexp: #d28b80;
+  --km-syntax-escape: #d2b477;
+  /* Diff (evening-zen) */
+  --km-diff-added: #c1ccac;
+  --km-diff-added-bg: #41483a;
+  --km-diff-removed: #e1a59c;
+  --km-diff-removed-bg: #49332f;
+  --km-diff-changed: #d2b477;
+  --km-diff-changed-bg: #49402f;
+  /* Charts (evening-zen) */
+  --km-chart-1: #a3ae91;
+  --km-chart-2: #9cb8ba;
+  --km-chart-3: #d0a78f;
+  --km-chart-4: #b5a4c8;
+  --km-chart-5: #d2b477;
+  --km-chart-6: #9bbbaa;
+  --km-chart-7: #d28b80;
+  /* Terminal (evening-zen) */
+  --km-term-black: #22251f;
+  --km-term-red: #d28b80;
+  --km-term-green: #a3ae91;
+  --km-term-yellow: #d2b477;
+  --km-term-blue: #9cb8ba;
+  --km-term-magenta: #b5a4c8;
+  --km-term-cyan: #9bbbaa;
+  --km-term-white: #c9c6b8;
+  --km-term-bright-black: #85877b;
+  --km-term-bright-red: #e0a096;
+  --km-term-bright-green: #b8c4a5;
+  --km-term-bright-yellow: #e0c58f;
+  --km-term-bright-blue: #b0c8c9;
+  --km-term-bright-magenta: #c6b6d6;
+  --km-term-bright-cyan: #b5ccbe;
+  --km-term-bright-white: #e8e5d9;
 }

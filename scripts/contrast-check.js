@@ -1,8 +1,7 @@
 /*
  * Kanso Matcha — WCAG contrast check (dev utility)
  *
- * Phase 2: verifies light-mode (Morning Matcha) and dark-mode (Evening Zen)
- * token pairs against WCAG AA (4.5:1 body text, 3:1 large text / UI borders).
+ * Tracks ~/kanso_design_system canonical v1.2 tokens.
  */
 
 function hexToRgb(hex) {
@@ -46,56 +45,60 @@ if (require.main === module) {
     bg: '#f3f1e9',
     surface: '#e8e5da',
     elevated: '#faf9f4',
-    fg: '#34382f',
-    fgMuted: '#636a49',
-    fgFaint: '#9b9c90',
-    matcha: '#89977a',
-    sage: '#aab49a',
-    clay: '#b68e78',
+    sunken: '#e2ded2',
     soft: '#dce2d1',
+    fg: '#34382f',
+    fgMuted: '#616359',
+    link: '#48676b',
+    linkActive: '#5c664a',
     border: '#d5d0c2',
-    borderStrong: '#c9c2ae',
-    link: '#61705a',
-    selection: '#dce2d1',
-    focus: '#89977a',
+    borderStrong: '#827e74',
+    focus: '#626d4f',
+    accentStrong: '#5c664a',
+    success: '#5c664a',
+    warning: '#795e2c',
+    danger: '#944e47',
+    info: '#48676b',
   };
   const dark = {
     bg: '#22251f',
     surface: '#2d3129',
     elevated: '#363a31',
-    fg: '#e8e5d9',
-    fgMuted: '#aaa99b',
-    fgFaint: '#85857a',
-    matcha: '#a3ae91',
-    sage: '#858f76',
-    clay: '#b58e79',
+    sunken: '#1c1f1a',
     soft: '#41483a',
+    fg: '#e8e5d9',
+    fgMuted: '#b5b5a9',
+    link: '#9cb8ba',
+    linkActive: '#c1ccac',
     border: '#41463b',
-    borderStrong: '#4d5146',
-    link: '#a3ae91',
-    selection: '#41483a',
+    borderStrong: '#83877f',
     focus: '#a3ae91',
+    accentStrong: '#c1ccac',
+    success: '#c1ccac',
+    warning: '#d2b477',
+    danger: '#e1a59c',
+    info: '#9cb8ba',
   };
 
-  console.log('--- Morning Matcha (light) ---');
-  ratio('body fg / bg', light.fg, light.bg);
-  ratio('body fg / surface', light.fg, light.surface);
-  ratio('body fg / elevated', light.fg, light.elevated);
-  ratio('muted fg / bg', light.fgMuted, light.bg);
-  ratio('muted fg / surface', light.fgMuted, light.surface);
-  ratio('faint fg / bg', light.fgFaint, light.bg);
-  ratio('link / bg', light.link, light.bg);
-  ratio('fg / soft', light.fg, light.soft);
-  ratio('border / bg (ui)', light.border, light.bg, 3);
+  const surfaces = ['bg', 'surface', 'elevated', 'sunken', 'soft'];
+  const statusKeys = ['success', 'warning', 'danger', 'info'];
 
-  console.log('--- Evening Zen (dark) ---');
-  ratio('body fg / bg', dark.fg, dark.bg);
-  ratio('body fg / surface', dark.fg, dark.surface);
-  ratio('body fg / elevated', dark.fg, dark.elevated);
-  ratio('muted fg / bg', dark.fgMuted, dark.bg);
-  ratio('muted fg / surface', dark.fgMuted, dark.surface);
-  ratio('faint fg / bg', dark.fgFaint, dark.bg);
-  ratio('link / bg', dark.link, dark.bg);
-  ratio('fg / soft', dark.fg, dark.soft);
-  ratio('border / bg (ui)', dark.border, dark.bg, 3);
+  let ok = true;
+  for (const [mode, t] of [['Morning Matcha', light], ['Evening Zen', dark]]) {
+    console.log(`--- ${mode} ---`);
+    for (const s of surfaces) {
+      ok = ratio(`body fg / ${s}`, t.fg, t[s]) && ok;
+      ok = ratio(`muted fg / ${s}`, t.fgMuted, t[s]) && ok;
+    }
+    for (const k of statusKeys) {
+      for (const s of surfaces) {
+        ok = ratio(`${k} / ${s}`, t[k], t[s]) && ok;
+      }
+    }
+    ok = ratio('link / bg', t.link, t.bg) && ok;
+    ok = ratio('link-active / bg', t.linkActive, t.bg) && ok;
+    // border-subtle is decorative (not held to 3:1 per WCAG 1.4.11)
+    ok = ratio('border-strong / bg (ui)', t.borderStrong, t.bg, 3) && ok;
+  }
+  process.exit(ok ? 0 : 1);
 }

@@ -1,184 +1,77 @@
 /*
  * Kanso Matcha — Typography
  *
- * Minimal-inspired: use Obsidian's default font variables, no bundled fonts,
- * no font-family overrides. One adaptive base size for note content.
+ * Phase 1: initial type foundation — font stacks, base scale and rhythm.
+ * Phase 4: typography group completed (fonts, scale, rhythm, headings, spacing).
+ * Phase 7: typography tokens reference optional Style Settings variables
+ * (km-line-height, km-content-width-input, km-font-heading) so the theme works
+ * with or without the Style Settings plugin installed.
  */
 
 :root {
-  /* ------------------------------------------------------------------
-     Font families — follow Obsidian's defaults (Minimal-style).
-     ------------------------------------------------------------------ */
+  /* Font stacks (system fallbacks; no bundled fonts without licensing). */
+  --km-font-interface: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  --km-font-text: Georgia, "Times New Roman", serif;
+  --km-font-heading: Georgia, "Times New Roman", serif;
+  --km-font-mono: "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
 
-  /*
-    Editor font follows the note text font unless the user explicitly
-    overrides the editor font (Minimal-style fallback chain).
-  */
-  --font-editor:
-    var(
-      --font-editor-override,
-      var(--font-interface-override, var(--font-interface))
-    );
+  /* Base rhythm */
+  --km-font-size-base: 16px;
+  --km-line-height-base: var(--km-line-height, 1.6);
+  --km-line-height-editor: var(--km-line-height, 1.65);
+  --km-content-width: var(--km-content-width-input, 68ch);
 
-  /* Semantic aliases for internal Kanso Matcha use. */
-  --km-font-interface: var(--font-interface);
-  --km-font-text: var(--font-text);
-  --km-font-mono: var(--font-monospace);
-  --km-font-editor: var(--font-editor);
+  /* Heading scale */
+  --km-heading-1-size: 2rem;
+  --km-heading-2-size: 1.75rem;
+  --km-heading-3-size: 1.5rem;
+  --km-heading-4-size: 1.25rem;
+  --km-heading-5-size: 1.125rem;
+  --km-heading-6-size: 1rem;
 
-  /* ------------------------------------------------------------------
-     Heading / inline-title fonts (all use the text face).
-     ------------------------------------------------------------------ */
-  --inline-title-font: var(--font-text);
-  --h1-font: var(--font-text);
-  --h2-font: var(--font-text);
-  --h3-font: var(--font-text);
-  --h4-font: var(--font-text);
-  --h5-font: var(--font-text);
-  --h6-font: var(--font-text);
-
-  /* ------------------------------------------------------------------
-     Adaptive font sizes
-     ------------------------------------------------------------------ */
-
-  --km-font-size-normal: var(--font-text-size, 16px);
-
-  --km-font-size-small: calc(var(--km-font-size-normal) * 0.875);
-  --km-font-size-smaller: calc(var(--km-font-size-normal) * 0.8125);
-  --km-font-size-code: calc(var(--km-font-size-normal) * 0.9);
-
-  /* ------------------------------------------------------------------
-     Obsidian-facing typography variables
-     ------------------------------------------------------------------ */
-
-  --line-height-normal: 1.5;
-  --line-height-tight: 1.3;
-
-  --heading-spacing: 1.75em;
-  --p-spacing: 1.25em;
-
-  --h1-size: 1.6em;
-  --h2-size: 1.35em;
-  --h3-size: 1.18em;
-  --h4-size: 1.05em;
-  --h5-size: 1em;
-  --h6-size: 0.95em;
-
-  --h1-line-height: 1.2;
-  --h2-line-height: 1.25;
-  --h3-line-height: 1.3;
-  --h4-line-height: 1.35;
-  --h5-line-height: 1.4;
-  --h6-line-height: 1.4;
-
-  --h1-weight: 600;
-  --h2-weight: 600;
-  --h3-weight: 500;
-  --h4-weight: 500;
-  --h5-weight: 500;
-  --h6-weight: 400;
-
-  --inline-title-size: 1.75em;
-  --inline-title-line-height: 1.2;
-  --inline-title-weight: 600;
-
-  --code-size: 0.9em;
-  --table-text-size: 0.9em;
-  --footnote-size: 0.85em;
-  --tag-size: 0.85em;
-
-  --font-ui-smaller: 12px;
-  --font-ui-small: 13px;
-  --font-ui-medium: 15px;
-  --font-ui-large: 20px;
-
-  --km-content-width: 40rem;
-  --km-content-width-wide: 50rem;
-  --km-content-width-max: 88%;
-
-  --km-heading-1-size: var(--h1-size);
-  --km-heading-2-size: var(--h2-size);
-  --km-heading-3-size: var(--h3-size);
-  --km-heading-4-size: var(--h4-size);
-  --km-heading-5-size: var(--h5-size);
-  --km-heading-6-size: var(--h6-size);
-
-  --km-font-size-base: var(--km-font-size-normal);
+  /* Heading spacing */
   --km-heading-spacing: 2em;
+
+  /* Paragraph spacing */
   --km-paragraph-spacing: 1.5em;
+
+  /* Sidebar font size */
   --km-font-size-sidebar: 0.875rem;
-
-  --font-weight: 400;
 }
-
-/* --------------------------------------------------------------------
-   Application
-   -------------------------------------------------------------------- */
 
 body {
   font-family: var(--km-font-interface);
+  font-size: var(--km-font-size-base);
+  line-height: var(--km-line-height-base);
 }
 
-/* Note content: reading view, live preview, popovers. */
-.markdown-preview-view,
+.cm-editor,
+.cm-content,
 .markdown-reading-view,
-.popover,
-.workspace-leaf-content[data-type="markdown"] {
+.markdown-source-view.mod-cm6,
+.markdown-preview-view {
   font-family: var(--km-font-text);
-  font-size: var(--km-font-size-normal);
-  line-height: var(--line-height-normal);
+  line-height: var(--km-line-height-editor);
 }
 
-/* Editor / Live Preview. */
-.markdown-source-view.mod-cm6 .cm-scroller,
-.markdown-source-view.mod-cm6 .cm-content,
-.markdown-source-view.mod-cm6 .cm-line {
-  font-family: var(--km-font-editor);
-  font-size: var(--km-font-size-normal);
-  line-height: 1.65;
+.cm-editor,
+.cm-content {
+  font-size: 16px;
 }
 
-/* Code. */
-code,
-pre,
-.cm-inline-code,
-.cm-hmd-codeblock,
-.markdown-preview-view code,
-.markdown-preview-view pre {
-  font-family: var(--km-font-mono);
+.markdown-preview-view,
+.markdown-source-view.mod-markdown {
+  font-size: 16px;
+  line-height: var(--km-line-height-editor);
 }
 
-code,
-.cm-inline-code,
-.markdown-preview-view code {
-  font-size: var(--code-size);
-}
-
-/* Content width. */
-.markdown-reading-view,
-.markdown-source-view.mod-cm6 .cm-content {
+.cm-line,
+.cm-content {
   max-width: var(--km-content-width);
 }
 
-/* Headings should not become decorative. Keep them calm. */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-.cm-header-1,
-.cm-header-2,
-.cm-header-3,
-.cm-header-4,
-.cm-header-5,
-.cm-header-6 {
-  letter-spacing: -0.01em;
-}
-
-h1,
-h2,
-.cm-header-1,
-.cm-header-2 {
-  letter-spacing: -0.015em;
+/* Content width */
+.markdown-reading-view {
+  max-width: var(--km-content-width);
 }

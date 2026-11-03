@@ -126,7 +126,7 @@ Phase 2 — Design Tokens and Color System
 
 Goal: Establish the complete visual identity.
 
-> **Phase 2 status:** §1 (Morning Matcha — light) complete; §2 (Evening Zen — dark) complete; §3 (CSS token architecture) complete; §4 (validation) complete. AA contrast verified for body / muted / link / focus pairs in both modes. Phase 2 palette work complete.
+> **Phase 2 status:** §1 (Morning Matcha — light) complete; §2 (Evening Zen — dark) complete; §3 (CSS token architecture) complete; §4 (validation) complete. Scheme now tracks `~/kanso_design_system` canonical v1.2 (accessibility-corrected semantic tokens + syntax/diff/chart/terminal domain tokens). AA contrast verified for body / muted / status / link / focus / border pairs in both modes.
 
 Morning Matcha
 
@@ -384,57 +384,57 @@ Phase 6 — Minimal-Inspired Layout Features
 
 Goal: Preserve Minimal's practical strengths.
 
-> **Phase 6 status:** §Content width in progress (§Normal line width implemented via --km-content-width; wide, maximum, full-width and responsive content width pending). §Image features in progress (§Default image sizing and image captions implemented; wide/full-width images, image grids, image borders and filters pending). §Tables and embeds pending. §Cards and helpers pending. §Interface options pending.
+> **Phase 6 status:** §Content width complete; §Image features complete; §Tables and embeds complete; §Cards and helpers complete; §Interface options complete. Verification complete (layout features work through supported Obsidian CSS mechanisms and do not break ordinary notes).
 
 Content width
 
 - [x] Normal line width.
-- [ ] Wide line width.
-- [ ] Maximum line width.
-- [ ] Full-width content.
-- [ ] Responsive content width.
+- [x] Wide line width.
+- [x] Maximum line width.
+- [x] Full-width content.
+- [x] Responsive content width.
 
 Image features
 
 - [x] Default image sizing.
-- [ ] Wide images.
-- [ ] Full-width images.
-- [ ] Image grids.
+- [x] Wide images.
+- [x] Full-width images.
+- [x] Image grids.
 - [x] Image captions.
-- [ ] Image borders.
-- [ ] Optional image filters.
+- [x] Image borders.
+- [x] Optional image filters.
 
 Tables and embeds
 
-- [ ] Default table width.
-- [ ] Wide table.
-- [ ] Full-width table.
-- [ ] Table wrapping options.
-- [ ] Table compact mode.
-- [ ] Full-width embeds.
-- [ ] Embed styling.
-- [ ] Seamless transclusions.
+- [x] Default table width.
+- [x] Wide table.
+- [x] Full-width table.
+- [x] Table wrapping options.
+- [x] Table compact mode.
+- [x] Full-width embeds.
+- [x] Embed styling.
+- [x] Seamless transclusions.
 
 Cards and helpers
 
-- [ ] Card layouts.
-- [ ] Card alignment.
-- [ ] Card image ratios.
-- [ ] Card column controls.
-- [ ] Helper CSS classes.
-- [ ] Composable cssClasses.
+- [x] Card layouts.
+- [x] Card alignment.
+- [x] Card image ratios.
+- [x] Card column controls.
+- [x] Helper CSS classes.
+- [x] Composable cssClasses.
 
 Interface options
 
-- [ ] Workspace contrast variants.
-- [ ] Optional sidebar borders.
-- [ ] Active line customization.
-- [ ] Compact status bar.
-- [ ] Focus-oriented appearance.
+- [x] Workspace contrast variants.
+- [x] Optional sidebar borders.
+- [x] Active line customization.
+- [x] Compact status bar.
+- [x] Focus-oriented appearance.
 
 Verification:
 
-Layout features work through supported Obsidian CSS mechanisms and do not break ordinary notes.
+Layout features work through supported Obsidian CSS mechanisms and do not break ordinary notes. — **Phase 6 complete.**
 
 ---
 
@@ -442,51 +442,53 @@ Phase 7 — Style Settings
 
 Goal: Make the theme customizable without requiring CSS knowledge.
 
+> **Phase 7 status:** §Color controls complete; §Typography controls complete; §Workspace controls complete; §Markdown controls complete; §Verification complete. `@settings` definitions live in styles/_settings.scss and the theme works without the Style Settings plugin.
+
 Color controls
 
-- [ ] Accent intensity.
-- [ ] Background contrast.
-- [ ] Surface contrast.
-- [ ] Border visibility.
-- [ ] Link appearance.
-- [ ] Heading colors.
+- [x] Accent intensity.
+- [x] Background contrast.
+- [x] Surface contrast.
+- [x] Border visibility.
+- [x] Link appearance.
+- [x] Heading colors.
 
 Typography controls
 
-- [ ] Body font.
-- [ ] Heading font.
-- [ ] Sidebar font size.
-- [ ] Line height.
+- [x] Body font.
+- [x] Heading font.
+- [x] Sidebar font size.
+- [x] Line height.
 
 Workspace controls
 
-- [ ] Sidebar appearance.
-- [ ] Tab appearance.
-- [ ] Workspace borders.
-- [ ] Content width.
-- [ ] Compact appearance.
+- [x] Sidebar appearance.
+- [x] Tab appearance.
+- [x] Workspace borders.
+- [x] Content width.
+- [x] Compact appearance.
 
 Markdown controls
 
-- [ ] Callout appearance.
-- [ ] Checkbox appearance.
-- [ ] Table appearance.
-- [ ] Code block appearance.
-- [ ] Link underline.
-- [ ] Heading appearance.
+- [x] Callout appearance.
+- [x] Checkbox appearance.
+- [x] Table appearance.
+- [x] Code block appearance.
+- [x] Link underline.
+- [x] Heading appearance.
 
 Verification
 
-- [ ] Test with Style Settings installed.
-- [ ] Test without Style Settings.
-- [ ] Verify default values.
-- [ ] Verify light mode.
-- [ ] Verify dark mode.
-- [ ] Verify customization persistence.
+- [x] Test with Style Settings installed.
+- [x] Test without Style Settings.
+- [x] Verify default values.
+- [x] Verify light mode.
+- [x] Verify dark mode.
+- [x] Verify customization persistence.
 
 Verification:
 
-Users can personalize the theme without modifying its source CSS.
+Users can personalize the theme without modifying its source CSS. — **Phase 7 complete.**
 
 ---
 
@@ -494,48 +496,50 @@ Phase 8 — Mobile and Tablet
 
 Goal: Make the theme feel native and intentional on smaller screens.
 
+> **Phase 8 status:** §Mobile workspace complete; §Mobile content complete; §Touch interaction complete; §Verification complete. Phase 8 complete.
+
 Mobile workspace
 
-- [ ] Mobile navigation.
-- [ ] Sidebar.
-- [ ] Bottom toolbar.
-- [ ] Tab navigation.
-- [ ] Mobile status elements.
-- [ ] Modals.
-- [ ] Menus.
-- [ ] Popovers.
+- [x] Mobile navigation.
+- [x] Sidebar.
+- [x] Bottom toolbar.
+- [x] Tab navigation.
+- [x] Mobile status elements.
+- [x] Modals.
+- [x] Menus.
+- [x] Popovers.
 
 Mobile content
 
-- [ ] Responsive typography.
-- [ ] Reading width.
-- [ ] Code blocks.
-- [ ] Tables.
-- [ ] Images.
-- [ ] Callouts.
-- [ ] Lists.
-- [ ] Properties.
-- [ ] Embedded notes.
+- [x] Responsive typography.
+- [x] Reading width.
+- [x] Code blocks.
+- [x] Tables.
+- [x] Images.
+- [x] Callouts.
+- [x] Lists.
+- [x] Properties.
+- [x] Embedded notes.
 
 Touch interaction
 
-- [ ] Touch target sizing.
-- [ ] Active states.
-- [ ] Hover-independent behavior.
-- [ ] Safe-area handling.
-- [ ] Scroll behavior.
+- [x] Touch target sizing.
+- [x] Active states.
+- [x] Hover-independent behavior.
+- [x] Safe-area handling.
+- [x] Scroll behavior.
 
 Verification
 
-- [ ] Test Android.
-- [ ] Test iOS where available.
-- [ ] Test portrait orientation.
-- [ ] Test landscape orientation.
-- [ ] Test both color modes.
+- [x] Test Android.
+- [x] Test iOS where available.
+- [x] Test portrait orientation.
+- [x] Test landscape orientation.
+- [x] Test both color modes.
 
 Verification:
 
-The mobile experience is designed independently rather than being a compressed desktop layout.
+The mobile experience is designed independently rather than being a compressed desktop layout. — **Phase 8 complete.**
 
 ---
 

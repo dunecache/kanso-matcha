@@ -28,10 +28,10 @@
   --text-on-accent: var(--km-bg);
   --text-selection: var(--km-selection);
 
-  --text-error: var(--km-danger, #b0563f);
-  --text-success: var(--km-success, #7d8f63);
-  --text-warning: var(--km-warning, #a08b4f);
-  --text-info: var(--km-info, #6b7f94);
+  --text-error: var(--km-danger, #944e47);
+  --text-success: var(--km-success, #5c664a);
+  --text-warning: var(--km-warning, #795e2c);
+  --text-info: var(--km-info, #48676b);
 
   --interactive-normal: var(--km-border);
   --interactive-accent: var(--km-matcha);
@@ -71,12 +71,12 @@
   --background-modifier-active-hover: var(--km-soft);
   --background-modifier-border: var(--km-border);
   --background-modifier-border-hover: var(--km-border);
-  --background-modifier-border-focus: var(--km-border);
+  --background-modifier-border-focus: var(--km-focus);
   --background-modifier-accent: var(--km-matcha);
 
   --text-normal: var(--km-fg);
   --text-muted: var(--km-fg-muted);
-  --text-accent: var(--km-matcha);
+  --text-accent: var(--km-link);
   --text-accent-hover: var(--km-clay);
   --text-faint: var(--km-fg-muted);
   --text-on-accent: var(--km-bg);

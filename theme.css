@@ -8,38 +8,105 @@
 /*
  * Kanso Matcha — Design Tokens
  *
- * Phase 0 deliverable: docs/DESIGN-SYSTEM.md
- * Phase 1 status: initial semantic token layer established.
- * Phase 2 status: Morning Matcha (light) and Evening Zen (dark) token sets complete.
+ * Source of truth: ~/kanso_design_system (canonical v1.2, accessibility-corrected).
+ * These values mirror tokens/primitives/*.json + tokens/semantic/*.json.
+ *
+ * Rules carried over from the design system:
+ *  - accent-primary (--km-matcha) is DECORATIVE ONLY — never use it for
+ *    text; use --km-accent-strong for accessible accent text.
+ *  - status text on dark surfaces uses the bright family variant (e.g.
+ *    danger = #E1A59C).
+ *  - links: link = info domain, link-active = accent-strong.
+ *  - quote-border = accent-secondary (sage).
+ *  - code-bg = surface-sunken.
  */
 :root {
-  /* Morning Matcha (light) */
-  --km-bg: #f3f1e9;
-  --km-surface: #e8e5da;
+  /* Surfaces */
+  --km-bg: var(--km-bg-light, #f3f1e9);
+  --km-surface: var(--km-surface-light, #e8e5da);
   --km-elevated: #faf9f4;
+  --km-sunken: #e2ded2;
+  --km-soft: #dce2d1; /* surface-accent */
+  /* Typography */
   --km-fg: #34382f;
-  --km-fg-muted: #636a49;
-  --km-matcha: #89977a;
-  --km-sage: #aab49a;
+  --km-fg-muted: #616359;
+  /* Accents */
+  --km-matcha: var(--km-matcha-light, #89977a); /* accent-primary (decorative only) */
+  --km-accent-strong: #5c664a; /* accessible accent */
+  --km-sage: #aab49a; /* accent-secondary */
   --km-clay: #b68e78;
-  --km-soft: #dce2d1;
-  --km-link: #61705a;
+  /* Selection / focus */
   --km-selection: #dce2d1;
-  --km-focus: #61705a;
-  --km-border: #d5d0c2;
-  --km-border-strong: #c9c2ae;
-  --km-red: #b0563f;
-  --km-orange: #b07a4a;
-  --km-yellow: #a08b4f;
-  --km-green: #7d8f63;
-  --km-cyan: #5f8078;
-  --km-blue: #6b7f94;
-  --km-purple: #8a7a96;
-  --km-pink: #a97a84;
-  --km-success: #7d8f63;
-  --km-warning: #a08b4f;
-  --km-danger: #b0563f;
-  --km-info: #6b7f94;
+  --km-focus: #626d4f;
+  /* Borders */
+  --km-border: var(--km-border-light, #d5d0c2);
+  --km-border-strong: var(--km-border-strong-light, #827e74);
+  /* Links */
+  --km-link: var(--km-link-light, #48676b); /* info domain */
+  --km-link-active: #5c664a; /* accent-strong */
+  /* Status */
+  --km-success: #5c664a;
+  --km-warning: #795e2c;
+  --km-danger: #944e47;
+  --km-info: #48676b;
+  /* Palette (syntax/terminal families) */
+  --km-red: #9a514a;
+  --km-orange: #9a6c43;
+  --km-yellow: #80642f;
+  --km-green: #626d4f;
+  --km-cyan: #55756a;
+  --km-blue: #4f7075;
+  --km-purple: #79658b;
+  --km-pink: #925f50;
+  /* Syntax (morning-matcha) */
+  --km-syntax-default: #34382f;
+  --km-syntax-comment: #77796d;
+  --km-syntax-keyword: #79658b;
+  --km-syntax-function: #626d4f;
+  --km-syntax-method: #55756a;
+  --km-syntax-string: #8a6654;
+  --km-syntax-number: #9a6c43;
+  --km-syntax-constant: #925f50;
+  --km-syntax-type: #4f7075;
+  --km-syntax-property: #686a5f;
+  --km-syntax-operator: #77796d;
+  --km-syntax-punctuation: #77796d;
+  --km-syntax-tag: #626d4f;
+  --km-syntax-attribute: #79658b;
+  --km-syntax-regexp: #925f50;
+  --km-syntax-escape: #80642f;
+  /* Diff (morning-matcha) */
+  --km-diff-added: #5c664a;
+  --km-diff-added-bg: #dce2d1;
+  --km-diff-removed: #914b45;
+  --km-diff-removed-bg: #ead8d2;
+  --km-diff-changed: #795e2c;
+  --km-diff-changed-bg: #eee5d0;
+  /* Charts (morning-matcha) */
+  --km-chart-1: #626d4f;
+  --km-chart-2: #4f7075;
+  --km-chart-3: #8a6654;
+  --km-chart-4: #79658b;
+  --km-chart-5: #80642f;
+  --km-chart-6: #55756a;
+  --km-chart-7: #925f50;
+  /* Terminal (morning-matcha) */
+  --km-term-black: #34382f;
+  --km-term-red: #9a514a;
+  --km-term-green: #626d4f;
+  --km-term-yellow: #80642f;
+  --km-term-blue: #4f7075;
+  --km-term-magenta: #79658b;
+  --km-term-cyan: #55756a;
+  --km-term-white: #e8e5da;
+  --km-term-bright-black: #77796d;
+  --km-term-bright-red: #b87970;
+  --km-term-bright-green: #89977a;
+  --km-term-bright-yellow: #b69a65;
+  --km-term-bright-blue: #819ba0;
+  --km-term-bright-magenta: #9a8aae;
+  --km-term-bright-cyan: #8ba99b;
+  --km-term-bright-white: #faf9f4;
   /* Spacing */
   --km-space-1: 0.25rem;
   --km-space-2: 0.5rem;
@@ -56,33 +123,92 @@
 }
 
 .theme-dark {
-  /* Evening Zen (dark) */
-  --km-bg: #22251f;
-  --km-surface: #2d3129;
+  /* Surfaces */
+  --km-bg: var(--km-bg-dark, #22251f);
+  --km-surface: var(--km-surface-dark, #2d3129);
   --km-elevated: #363a31;
+  --km-sunken: #1c1f1a;
+  --km-soft: #41483a; /* surface-accent */
+  /* Typography */
   --km-fg: #e8e5d9;
-  --km-fg-muted: #aaa99b;
-  --km-matcha: #a3ae91;
-  --km-sage: #858f76;
+  --km-fg-muted: #b5b5a9;
+  /* Accents */
+  --km-matcha: var(--km-matcha-dark, #a3ae91); /* accent-primary (decorative only) */
+  --km-accent-strong: #c1ccac; /* accessible accent */
+  --km-sage: #858f76; /* accent-secondary */
   --km-clay: #b58e79;
-  --km-soft: #41483a;
-  --km-link: #a3ae91;
+  /* Selection / focus */
   --km-selection: #41483a;
   --km-focus: #a3ae91;
-  --km-border: #41463b;
-  --km-border-strong: #4d5146;
-  --km-red: #cf7a63;
-  --km-orange: #cf9060;
-  --km-yellow: #c9a25e;
-  --km-green: #a3b58f;
-  --km-cyan: #8fb3a8;
-  --km-blue: #9aa8bd;
-  --km-purple: #b3a3c0;
-  --km-pink: #c49aac;
-  --km-success: #a3b58f;
-  --km-warning: #c9a25e;
-  --km-danger: #cf7a63;
-  --km-info: #9aa8bd;
+  /* Borders */
+  --km-border: var(--km-border-dark, #41463b);
+  --km-border-strong: var(--km-border-strong-dark, #83877f);
+  /* Links */
+  --km-link: var(--km-link-dark, #9cb8ba); /* info domain */
+  --km-link-active: #c1ccac; /* accent-strong */
+  /* Status */
+  --km-success: #c1ccac;
+  --km-warning: #d2b477;
+  --km-danger: #e1a59c;
+  --km-info: #9cb8ba;
+  /* Palette (syntax/terminal families) */
+  --km-red: #d28b80;
+  --km-orange: #d2ac7d;
+  --km-yellow: #d2b477;
+  --km-green: #a3ae91;
+  --km-cyan: #9bbbaa;
+  --km-blue: #9cb8ba;
+  --km-purple: #b5a4c8;
+  --km-pink: #d28b80;
+  /* Syntax (evening-zen) */
+  --km-syntax-default: #e8e5d9;
+  --km-syntax-comment: #85877b;
+  --km-syntax-keyword: #b5a4c8;
+  --km-syntax-function: #a3ae91;
+  --km-syntax-method: #9bbbaa;
+  --km-syntax-string: #d0a78f;
+  --km-syntax-number: #d2ac7d;
+  --km-syntax-constant: #d28b80;
+  --km-syntax-type: #9cb8ba;
+  --km-syntax-property: #c9c6b8;
+  --km-syntax-operator: #aaa99b;
+  --km-syntax-punctuation: #aaa99b;
+  --km-syntax-tag: #a3ae91;
+  --km-syntax-attribute: #b5a4c8;
+  --km-syntax-regexp: #d28b80;
+  --km-syntax-escape: #d2b477;
+  /* Diff (evening-zen) */
+  --km-diff-added: #c1ccac;
+  --km-diff-added-bg: #41483a;
+  --km-diff-removed: #e1a59c;
+  --km-diff-removed-bg: #49332f;
+  --km-diff-changed: #d2b477;
+  --km-diff-changed-bg: #49402f;
+  /* Charts (evening-zen) */
+  --km-chart-1: #a3ae91;
+  --km-chart-2: #9cb8ba;
+  --km-chart-3: #d0a78f;
+  --km-chart-4: #b5a4c8;
+  --km-chart-5: #d2b477;
+  --km-chart-6: #9bbbaa;
+  --km-chart-7: #d28b80;
+  /* Terminal (evening-zen) */
+  --km-term-black: #22251f;
+  --km-term-red: #d28b80;
+  --km-term-green: #a3ae91;
+  --km-term-yellow: #d2b477;
+  --km-term-blue: #9cb8ba;
+  --km-term-magenta: #b5a4c8;
+  --km-term-cyan: #9bbbaa;
+  --km-term-white: #c9c6b8;
+  --km-term-bright-black: #85877b;
+  --km-term-bright-red: #e0a096;
+  --km-term-bright-green: #b8c4a5;
+  --km-term-bright-yellow: #e0c58f;
+  --km-term-bright-blue: #b0c8c9;
+  --km-term-bright-magenta: #c6b6d6;
+  --km-term-bright-cyan: #b5ccbe;
+  --km-term-bright-white: #e8e5d9;
 }
 
 /*
@@ -112,10 +238,10 @@
   --text-faint: var(--km-fg-muted);
   --text-on-accent: var(--km-bg);
   --text-selection: var(--km-selection);
-  --text-error: var(--km-danger, #b0563f);
-  --text-success: var(--km-success, #7d8f63);
-  --text-warning: var(--km-warning, #a08b4f);
-  --text-info: var(--km-info, #6b7f94);
+  --text-error: var(--km-danger, #944e47);
+  --text-success: var(--km-success, #5c664a);
+  --text-warning: var(--km-warning, #795e2c);
+  --text-info: var(--km-info, #48676b);
   --interactive-normal: var(--km-border);
   --interactive-accent: var(--km-matcha);
   --interactive-accent-hover: var(--km-clay);
@@ -150,11 +276,11 @@
   --background-modifier-active-hover: var(--km-soft);
   --background-modifier-border: var(--km-border);
   --background-modifier-border-hover: var(--km-border);
-  --background-modifier-border-focus: var(--km-border);
+  --background-modifier-border-focus: var(--km-focus);
   --background-modifier-accent: var(--km-matcha);
   --text-normal: var(--km-fg);
   --text-muted: var(--km-fg-muted);
-  --text-accent: var(--km-matcha);
+  --text-accent: var(--km-link);
   --text-accent-hover: var(--km-clay);
   --text-faint: var(--km-fg-muted);
   --text-on-accent: var(--km-bg);
@@ -222,165 +348,73 @@ hr {
 /*
  * Kanso Matcha — Typography
  *
- * Minimal-inspired: use Obsidian's default font variables, no bundled fonts,
- * no font-family overrides. One adaptive base size for note content.
+ * Phase 1: initial type foundation — font stacks, base scale and rhythm.
+ * Phase 4: typography group completed (fonts, scale, rhythm, headings, spacing).
+ * Phase 7: typography tokens reference optional Style Settings variables
+ * (km-line-height, km-content-width-input, km-font-heading) so the theme works
+ * with or without the Style Settings plugin installed.
  */
 :root {
-  /* ------------------------------------------------------------------
-     Font families — follow Obsidian's defaults (Minimal-style).
-     ------------------------------------------------------------------ */
-  /*
-    Editor font follows the note text font unless the user explicitly
-    overrides the editor font (Minimal-style fallback chain).
-  */
-  --font-editor:
-    var(
-      --font-editor-override,
-      var(--font-interface-override, var(--font-interface))
-    );
-  /* Semantic aliases for internal Kanso Matcha use. */
-  --km-font-interface: var(--font-interface);
-  --km-font-text: var(--font-text);
-  --km-font-mono: var(--font-monospace);
-  --km-font-editor: var(--font-editor);
-  /* ------------------------------------------------------------------
-     Heading / inline-title fonts (all use the text face).
-     ------------------------------------------------------------------ */
-  --inline-title-font: var(--font-text);
-  --h1-font: var(--font-text);
-  --h2-font: var(--font-text);
-  --h3-font: var(--font-text);
-  --h4-font: var(--font-text);
-  --h5-font: var(--font-text);
-  --h6-font: var(--font-text);
-  /* ------------------------------------------------------------------
-     Adaptive font sizes
-     ------------------------------------------------------------------ */
-  --km-font-size-normal: var(--font-text-size, 16px);
-  --km-font-size-small: calc(var(--km-font-size-normal) * 0.875);
-  --km-font-size-smaller: calc(var(--km-font-size-normal) * 0.8125);
-  --km-font-size-code: calc(var(--km-font-size-normal) * 0.9);
-  /* ------------------------------------------------------------------
-     Obsidian-facing typography variables
-     ------------------------------------------------------------------ */
-  --line-height-normal: 1.5;
-  --line-height-tight: 1.3;
-  --heading-spacing: 1.75em;
-  --p-spacing: 1.25em;
-  --h1-size: 1.6em;
-  --h2-size: 1.35em;
-  --h3-size: 1.18em;
-  --h4-size: 1.05em;
-  --h5-size: 1em;
-  --h6-size: 0.95em;
-  --h1-line-height: 1.2;
-  --h2-line-height: 1.25;
-  --h3-line-height: 1.3;
-  --h4-line-height: 1.35;
-  --h5-line-height: 1.4;
-  --h6-line-height: 1.4;
-  --h1-weight: 600;
-  --h2-weight: 600;
-  --h3-weight: 500;
-  --h4-weight: 500;
-  --h5-weight: 500;
-  --h6-weight: 400;
-  --inline-title-size: 1.75em;
-  --inline-title-line-height: 1.2;
-  --inline-title-weight: 600;
-  --code-size: 0.9em;
-  --table-text-size: 0.9em;
-  --footnote-size: 0.85em;
-  --tag-size: 0.85em;
-  --font-ui-smaller: 12px;
-  --font-ui-small: 13px;
-  --font-ui-medium: 15px;
-  --font-ui-large: 20px;
-  --km-content-width: 40rem;
-  --km-content-width-wide: 50rem;
-  --km-content-width-max: 88%;
-  --km-heading-1-size: var(--h1-size);
-  --km-heading-2-size: var(--h2-size);
-  --km-heading-3-size: var(--h3-size);
-  --km-heading-4-size: var(--h4-size);
-  --km-heading-5-size: var(--h5-size);
-  --km-heading-6-size: var(--h6-size);
-  --km-font-size-base: var(--km-font-size-normal);
+  /* Font stacks (system fallbacks; no bundled fonts without licensing). */
+  --km-font-interface: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  --km-font-text: Georgia, "Times New Roman", serif;
+  --km-font-heading: Georgia, "Times New Roman", serif;
+  --km-font-mono: "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
+  /* Base rhythm */
+  --km-font-size-base: 16px;
+  --km-line-height-base: var(--km-line-height, 1.6);
+  --km-line-height-editor: var(--km-line-height, 1.65);
+  --km-content-width: var(--km-content-width-input, 68ch);
+  /* Heading scale */
+  --km-heading-1-size: 2rem;
+  --km-heading-2-size: 1.75rem;
+  --km-heading-3-size: 1.5rem;
+  --km-heading-4-size: 1.25rem;
+  --km-heading-5-size: 1.125rem;
+  --km-heading-6-size: 1rem;
+  /* Heading spacing */
   --km-heading-spacing: 2em;
+  /* Paragraph spacing */
   --km-paragraph-spacing: 1.5em;
+  /* Sidebar font size */
   --km-font-size-sidebar: 0.875rem;
-  --font-weight: 400;
 }
 
-/* --------------------------------------------------------------------
-   Application
-   -------------------------------------------------------------------- */
 body {
   font-family: var(--km-font-interface);
+  font-size: var(--km-font-size-base);
+  line-height: var(--km-line-height-base);
 }
 
-/* Note content: reading view, live preview, popovers. */
-.markdown-preview-view,
+.cm-editor,
+.cm-content,
 .markdown-reading-view,
-.popover,
-.workspace-leaf-content[data-type=markdown] {
+.markdown-source-view.mod-cm6,
+.markdown-preview-view {
   font-family: var(--km-font-text);
-  font-size: var(--km-font-size-normal);
-  line-height: var(--line-height-normal);
+  line-height: var(--km-line-height-editor);
 }
 
-/* Editor / Live Preview. */
-.markdown-source-view.mod-cm6 .cm-scroller,
-.markdown-source-view.mod-cm6 .cm-content,
-.markdown-source-view.mod-cm6 .cm-line {
-  font-family: var(--km-font-editor);
-  font-size: var(--km-font-size-normal);
-  line-height: 1.65;
+.cm-editor,
+.cm-content {
+  font-size: 16px;
 }
 
-/* Code. */
-code,
-pre,
-.cm-inline-code,
-.cm-hmd-codeblock,
-.markdown-preview-view code,
-.markdown-preview-view pre {
-  font-family: var(--km-font-mono);
+.markdown-preview-view,
+.markdown-source-view.mod-markdown {
+  font-size: 16px;
+  line-height: var(--km-line-height-editor);
 }
 
-code,
-.cm-inline-code,
-.markdown-preview-view code {
-  font-size: var(--code-size);
-}
-
-/* Content width. */
-.markdown-reading-view,
-.markdown-source-view.mod-cm6 .cm-content {
+.cm-line,
+.cm-content {
   max-width: var(--km-content-width);
 }
 
-/* Headings should not become decorative. Keep them calm. */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-.cm-header-1,
-.cm-header-2,
-.cm-header-3,
-.cm-header-4,
-.cm-header-5,
-.cm-header-6 {
-  letter-spacing: -0.01em;
-}
-
-h1,
-h2,
-.cm-header-1,
-.cm-header-2 {
-  letter-spacing: -0.015em;
+/* Content width */
+.markdown-reading-view {
+  max-width: var(--km-content-width);
 }
 
 /*
@@ -388,6 +422,8 @@ h2,
  *
  * Phase 1: initial application shell surfaces (backgrounds, surfaces, borders).
  * Phase 3: full workspace / sidebar / tab / ribbon styling.
+ * Phase 6: interface options (workspace contrast, sidebar borders, compact
+ * status bar, focus-oriented appearance).
  */
 .workspace,
 .workspace-background,
@@ -449,6 +485,12 @@ h2,
   background-color: var(--km-bg);
 }
 
+/* Sidebar typography (Style Settings: km-font-size-sidebar) */
+.nav-file-title,
+.nav-folder-title {
+  font-size: var(--km-font-size-sidebar);
+}
+
 /* Workspace separators */
 .workspace-split,
 .workspace-leaf-container,
@@ -486,7 +528,9 @@ h2,
 
 /* Application UI surfaces */
 .status-bar {
+  padding: 0 var(--km-space-2);
   background-color: var(--km-surface);
+  font-size: 0.8rem;
 }
 
 .tooltip {
@@ -517,6 +561,32 @@ h2,
 .canvas,
 .canvas-pane {
   background-color: var(--km-bg);
+}
+
+/* Workspace contrast variants */
+.workspace.km-contrast-soft .workspace-split.mod-left-split,
+.workspace.km-contrast-soft .workspace-split.mod-right-split {
+  background-color: var(--km-bg);
+}
+
+.workspace.km-contrast-elevated .workspace-split.mod-left-split,
+.workspace.km-contrast-elevated .workspace-split.mod-right-split {
+  background-color: var(--km-elevated);
+}
+
+/* Optional sidebar borders */
+.workspace-split.mod-left-split {
+  border-right: 1px solid var(--km-border);
+}
+
+.workspace-split.mod-right-split {
+  border-left: 1px solid var(--km-border);
+}
+
+/* Active line customization is handled in _editor (cm-activeLine). */
+/* Focus-oriented appearance */
+.workspace-leaf:not(.mod-active) .view-header {
+  opacity: 0.7;
 }
 
 /*
@@ -594,25 +664,40 @@ h2,
 /* Syntax highlighting marks */
 .cm-editor .cm-keyword,
 .cm-editor .cm-atom {
-  color: var(--km-clay);
+  color: var(--km-syntax-keyword);
 }
 
-.cm-editor .cm-string,
-.cm-editor .cm-number,
-.cm-editor .cm-def,
+.cm-editor .cm-string {
+  color: var(--km-syntax-string);
+}
+
+.cm-editor .cm-number {
+  color: var(--km-syntax-number);
+}
+
+.cm-editor .cm-def {
+  color: var(--km-syntax-function);
+}
+
 .cm-editor .cm-property {
-  color: var(--km-sage);
+  color: var(--km-syntax-property);
 }
 
 .cm-editor .cm-comment,
 .cm-editor .cm-meta {
-  color: var(--km-fg-muted);
+  color: var(--km-syntax-comment);
 }
 
-.cm-editor .cm-variable,
-.cm-editor .cm-punctuation,
+.cm-editor .cm-variable {
+  color: var(--km-syntax-default);
+}
+
+.cm-editor .cm-punctuation {
+  color: var(--km-syntax-punctuation);
+}
+
 .cm-editor .cm-operator {
-  color: var(--km-fg);
+  color: var(--km-syntax-operator);
 }
 
 .cm-activeLine {
@@ -631,7 +716,7 @@ h2,
  * Phase 1: minimal markdown surface foundation (backgrounds, base typography).
  * Phase 4: reading-view content styles (blockquotes, lists, horizontal rules).
  * Phase 5: headings, typography, lists, tables, callouts, code, math, embeds.
- * Phase 6: image features (default sizing, captions).
+ * Phase 6: image features, tables and embeds, cards and helpers.
  */
 .markdown-reading-view,
 .markdown-source-view.mod-markdown,
@@ -655,7 +740,7 @@ h2,
 .markdown-source-view.mod-markdown blockquote,
 .markdown-preview blockquote {
   background-color: var(--km-soft);
-  border-left: 2px solid var(--km-clay);
+  border-left: 2px solid var(--km-sage);
   color: var(--km-fg-muted);
 }
 
@@ -689,7 +774,7 @@ h2,
 .markdown-preview :not(pre) > code {
   font-family: var(--km-font-mono);
   font-size: 0.875em;
-  background-color: var(--km-soft);
+  background-color: var(--km-sunken);
   color: var(--km-fg);
   padding: 0.1em 0.35em;
   border-radius: var(--km-radius-sm);
@@ -698,7 +783,7 @@ h2,
 /* Code blocks */
 .markdown-reading-view pre,
 .markdown-preview pre {
-  background-color: var(--km-surface);
+  background-color: var(--km-sunken);
   border: 1px solid var(--km-border);
   border-radius: var(--km-radius-md);
   padding: var(--km-space-3);
@@ -748,16 +833,121 @@ h2,
   margin-top: var(--km-space-2);
 }
 
+/* Layout helpers: wide and full-width media */
+.markdown-reading-view .km-wide,
+.markdown-preview .km-wide {
+  width: calc(100% + 2 * var(--km-space-5));
+  margin-left: calc(-1 * var(--km-space-5));
+}
+
+.markdown-reading-view .km-full-width,
+.markdown-preview .km-full-width {
+  width: 100%;
+  max-width: none;
+}
+
+/* Image borders */
+.markdown-reading-view .km-bordered img,
+.markdown-preview .km-bordered img {
+  border: 1px solid var(--km-border);
+  border-radius: var(--km-radius-sm);
+}
+
+/* Optional image filters */
+.markdown-reading-view .km-filter img,
+.markdown-preview .km-filter img {
+  filter: saturate(0.9) brightness(1.02);
+}
+
+/* Image grid */
+.markdown-reading-view .km-grid,
+.markdown-preview .km-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: var(--km-space-3);
+}
+
+.markdown-reading-view .km-grid img,
+.markdown-preview .km-grid img {
+  width: 100%;
+}
+
+/* Tables: width and compact helpers */
+.markdown-reading-view table.km-wide,
+.markdown-preview table.km-wide {
+  width: calc(100% + 2 * var(--km-space-5));
+  margin-left: calc(-1 * var(--km-space-5));
+}
+
+.markdown-reading-view table.km-full-width,
+.markdown-preview table.km-full-width {
+  width: 100%;
+}
+
+.markdown-reading-view table.km-compact th,
+.markdown-reading-view table.km-compact td,
+.markdown-preview table.km-compact th,
+.markdown-preview table.km-compact td {
+  padding: var(--km-space-1) var(--km-space-2);
+}
+
+/* Table wrapping */
+.markdown-reading-view .table-wrapper,
+.markdown-preview .table-wrapper {
+  overflow-x: auto;
+}
+
+/* Embeds and transclusions */
+.markdown-reading-view .markdown-embed,
+.markdown-preview .markdown-embed {
+  background-color: var(--km-surface);
+  border-radius: var(--km-radius-md);
+  padding: var(--km-space-3) var(--km-space-4);
+}
+
+.markdown-reading-view .markdown-embed.seamless,
+.markdown-preview .markdown-embed.seamless {
+  background-color: transparent;
+  padding: 0;
+}
+
+.markdown-reading-view .markdown-embed .embed-title,
+.markdown-preview .markdown-embed .embed-title {
+  color: var(--km-fg-muted);
+  font-size: 0.875rem;
+}
+
+/* Cards */
+.markdown-reading-view .km-card,
+.markdown-preview .km-card {
+  background-color: var(--km-surface);
+  border-radius: var(--km-radius-md);
+  padding: var(--km-space-4);
+}
+
+.markdown-reading-view .km-cards,
+.markdown-preview .km-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: var(--km-space-4);
+}
+
+.markdown-reading-view .km-cards .km-card img,
+.markdown-preview .km-cards .km-card img {
+  border-radius: var(--km-radius-sm);
+}
+
 /*
  * Kanso Matcha — Headings
  *
  * Phase 5: heading hierarchy, font weights and spacing for Reading View,
  * Live Preview and Source Mode, using the semantic design tokens.
+ * Phase 7: heading font and heading color are Style Settings controls.
  */
 .markdown-reading-view h1,
 .markdown-preview h1 {
   font-size: var(--km-heading-1-size);
-  font-weight: 600;
+  font-weight: 700;
   margin: var(--km-space-5) 0 var(--km-space-4) 0;
   color: var(--km-fg);
 }
@@ -765,7 +955,7 @@ h2,
 .markdown-reading-view h2,
 .markdown-preview h2 {
   font-size: var(--km-heading-2-size);
-  font-weight: 600;
+  font-weight: 700;
   margin: var(--km-space-4) 0 var(--km-space-4) 0;
   color: var(--km-fg);
 }
@@ -773,7 +963,7 @@ h2,
 .markdown-reading-view h3,
 .markdown-preview h3 {
   font-size: var(--km-heading-3-size);
-  font-weight: 500;
+  font-weight: 700;
   margin: var(--km-space-4) 0 var(--km-space-3) 0;
   color: var(--km-fg);
 }
@@ -781,7 +971,7 @@ h2,
 .markdown-reading-view h4,
 .markdown-preview h4 {
   font-size: var(--km-heading-4-size);
-  font-weight: 500;
+  font-weight: 700;
   margin: var(--km-space-3) 0 var(--km-space-3) 0;
   color: var(--km-fg);
 }
@@ -789,7 +979,7 @@ h2,
 .markdown-reading-view h5,
 .markdown-preview h5 {
   font-size: var(--km-heading-5-size);
-  font-weight: 500;
+  font-weight: 600;
   margin: var(--km-space-3) 0 var(--km-space-3) 0;
   color: var(--km-fg);
 }
@@ -797,14 +987,26 @@ h2,
 .markdown-reading-view h6,
 .markdown-preview h6 {
   font-size: var(--km-heading-6-size);
-  font-weight: 500;
+  font-weight: 600;
   margin: var(--km-space-3) 0 var(--km-space-3) 0;
   color: var(--km-fg);
 }
 
-/* Inline title */
-.inline-title {
-  font-weight: 600;
+/* Heading family and color (Style Settings: km-font-heading / km-heading-color) */
+.markdown-reading-view h1,
+.markdown-preview h1,
+.markdown-reading-view h2,
+.markdown-preview h2,
+.markdown-reading-view h3,
+.markdown-preview h3,
+.markdown-reading-view h4,
+.markdown-preview h4,
+.markdown-reading-view h5,
+.markdown-preview h5,
+.markdown-reading-view h6,
+.markdown-preview h6 {
+  font-family: var(--km-font-heading);
+  color: var(--km-heading-color);
 }
 
 /*
@@ -826,7 +1028,7 @@ a.external-link {
 .markdown-preview a:hover,
 a.internal-link:hover,
 a.external-link:hover {
-  color: var(--km-clay);
+  color: var(--km-link-active);
 }
 
 /*
@@ -918,11 +1120,6 @@ a.external-link:hover {
   background-color: var(--km-soft);
 }
 
-/*
- * Kanso Matcha — Lists and checkboxes
- *
- * Phase 5: list markers, task checkboxes and completed task appearance.
- */
 .markdown-reading-view ul,
 .markdown-preview ul {
   list-style: disc;
@@ -935,7 +1132,7 @@ a.external-link:hover {
 
 .markdown-reading-view input[type=checkbox],
 .markdown-preview input[type=checkbox] {
-  accent-color: var(--km-success);
+  accent-color: var(--km-accent-strong);
 }
 
 /*
@@ -969,17 +1166,653 @@ a.external-link:hover {
  * Phase 3 will implement modal surfaces, borders, focus.
  */
 /*
- * Kanso Matcha — Mobile
+ * Kanso Matcha — Mobile and Tablet
  *
- * Phase 1: placeholder for mobile module.
- * Phase 8 will implement mobile-first overrides.
+ * Phase 8: mobile workspace, content and touch-interaction styling.
+ * The mobile experience is designed independently, not as a compressed desktop
+ * layout — full-width content, larger touch targets and safe-area padding.
  */
+/* Mobile workspace */
+.is-mobile .workspace-drawer,
+.is-mobile .side-dock-ribbon,
+.is-mobile .workspace-drawer.mod-left,
+.is-mobile .workspace-drawer.mod-right {
+  background-color: var(--km-surface);
+}
+
+.is-mobile .workspace-drawer-header {
+  border-bottom: 1px solid var(--km-border);
+}
+
+.is-mobile .side-dock-ribbon.mod-left {
+  border-right: 1px solid var(--km-border);
+  padding-left: env(safe-area-inset-left, 0px);
+}
+
+.is-mobile .side-dock-ribbon.mod-right {
+  border-left: 1px solid var(--km-border);
+  padding-right: env(safe-area-inset-right, 0px);
+}
+
+/* Bottom toolbar */
+.is-mobile .mobile-toolbar {
+  background-color: var(--km-surface);
+  border-top: 1px solid var(--km-border);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+.is-mobile .mobile-toolbar-option {
+  min-height: 44px;
+  color: var(--km-fg-muted);
+}
+
+.is-mobile .mobile-toolbar-option.is-active {
+  color: var(--km-fg);
+}
+
+/* Tab navigation */
+.is-mobile .workspace-tab-header {
+  max-width: 100%;
+}
+
+/* Mobile status elements */
+.is-mobile .status-bar {
+  border-top: 1px solid var(--km-border);
+  padding: 0 var(--km-space-2) env(safe-area-inset-bottom, 0px);
+  font-size: 0.8rem;
+}
+
+/* Modals */
+.is-mobile .modal {
+  width: 100%;
+  border-radius: 0;
+}
+
+/* Menus */
+.is-mobile .menu {
+  border-radius: var(--km-radius-md);
+}
+
+.is-mobile .menu-item {
+  min-height: 44px;
+}
+
+/* Popovers */
+.is-mobile .popover {
+  border: 1px solid var(--km-border);
+  border-radius: var(--km-radius-md);
+}
+
+/* Mobile content */
+.is-mobile .markdown-reading-view {
+  max-width: none;
+  padding: 0 var(--km-space-4);
+}
+
+.is-mobile .markdown-reading-view pre {
+  font-size: 0.8125rem;
+  padding: var(--km-space-2);
+}
+
+.is-mobile .markdown-reading-view table {
+  font-size: 0.875rem;
+}
+
+.is-mobile .markdown-reading-view table th,
+.is-mobile .markdown-reading-view table td {
+  padding: var(--km-space-1) var(--km-space-2);
+}
+
+.is-mobile .markdown-reading-view .katex-display {
+  overflow-x: auto;
+}
+
+.is-mobile .markdown-reading-view .callout {
+  padding: var(--km-space-2) var(--km-space-3);
+}
+
+.is-mobile .markdown-reading-view .markdown-embed {
+  margin: var(--km-space-2) 0;
+}
+
+.is-mobile img {
+  border-radius: var(--km-radius-md);
+}
+
+.is-mobile .metadata {
+  font-size: 0.875rem;
+}
+
+/* Touch interaction */
+.is-mobile .clickable-icon {
+  min-width: 44px;
+  min-height: 44px;
+}
+
+.is-mobile .nav-file.is-hoverable:active,
+.is-mobile .nav-folder.is-hoverable:active,
+.is-mobile .workspace-tab-header:active,
+.is-mobile .menu-item:active {
+  background-color: var(--km-soft);
+}
+
+.is-mobile {
+  overscroll-behavior: contain;
+}
+
 /*
  * Kanso Matcha — Accessibility
  *
  * Phase 1: placeholder for accessibility module.
  * Phase 10 will implement focus, reduced motion, contrast checks.
  */
+/*
+ * Kanso Matcha — Style Settings
+ *
+ * Phase 7: `@settings` definitions for the Style Settings plugin, plus the
+ * appearance class rules referenced by class-select / class-toggle settings.
+ * The theme works without the plugin — every setting falls back to the
+ * defaults declared in _tokens / _typography.
+ */
+/* @settings
+
+name: Kanso Matcha
+id: kanso-matcha
+settings:
+    -
+        id: km-heading-color-controls
+        title: Color
+        type: heading
+        level: 2
+    -
+        id: km-accent-intensity
+        title: Accent intensity
+        description: Adjusts the strength of the matcha accent colors.
+        type: class-select
+        default: km-accent-default
+        options:
+            -
+                label: Subtle
+                value: km-accent-subtle
+            -
+                label: Default
+                value: km-accent-default
+            -
+                label: Vivid
+                value: km-accent-vivid
+    -
+        id: km-bg-light
+        title: Background color (Morning Matcha)
+        description: Main background of the light theme.
+        type: variable-color
+        format: hex
+        default: '#f3f1e9'
+    -
+        id: km-bg-dark
+        title: Background color (Evening Zen)
+        description: Main background of the dark theme.
+        type: variable-color
+        format: hex
+        default: '#22251f'
+    -
+        id: km-surface-light
+        title: Surface color (Morning Matcha)
+        type: variable-color
+        format: hex
+        default: '#e8e5da'
+    -
+        id: km-surface-dark
+        title: Surface color (Evening Zen)
+        type: variable-color
+        format: hex
+        default: '#2d3129'
+    -
+        id: km-matcha-light
+        title: Accent color (Morning Matcha)
+        type: variable-color
+        format: hex
+        default: '#89977a'
+    -
+        id: km-matcha-dark
+        title: Accent color (Evening Zen)
+        type: variable-color
+        format: hex
+        default: '#a3ae91'
+    -
+        id: km-link-light
+        title: Link color (Morning Matcha)
+        type: variable-color
+        format: hex
+        default: '#48676b'
+    -
+        id: km-link-dark
+        title: Link color (Evening Zen)
+        type: variable-color
+        format: hex
+        default: '#9cb8ba'
+    -
+        id: km-border-light
+        title: Border color (Morning Matcha)
+        type: variable-color
+        format: hex
+        default: '#d5d0c2'
+    -
+        id: km-border-dark
+        title: Border color (Evening Zen)
+        type: variable-color
+        format: hex
+        default: '#41463b'
+    -
+        id: km-border-strong-light
+        title: Strong border color (Morning Matcha)
+        type: variable-color
+        format: hex
+        default: '#827e74'
+    -
+        id: km-border-strong-dark
+        title: Strong border color (Evening Zen)
+        type: variable-color
+        format: hex
+        default: '#83877f'
+    -
+        id: km-heading-color-light
+        title: Heading color (Morning Matcha)
+        type: variable-color
+        format: hex
+        default: '#34382f'
+    -
+        id: km-heading-color-dark
+        title: Heading color (Evening Zen)
+        type: variable-color
+        format: hex
+        default: '#e8e5d9'
+    -
+        id: km-heading-typography-controls
+        title: Typography
+        type: heading
+        level: 2
+    -
+        id: km-font-text
+        title: Body font
+        description: Font used for Markdown body text.
+        type: variable-select
+        default: 'Georgia, "Times New Roman", serif'
+        options:
+            -
+                label: Georgia (serif)
+                value: 'Georgia, "Times New Roman", serif'
+            -
+                label: Palatino (serif)
+                value: 'Palatino, "Palatino Linotype", Georgia, serif'
+            -
+                label: System sans
+                value: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
+    -
+        id: km-font-heading
+        title: Heading font
+        description: Font used for Markdown headings.
+        type: variable-select
+        default: 'Georgia, "Times New Roman", serif'
+        options:
+            -
+                label: Georgia (serif)
+                value: 'Georgia, "Times New Roman", serif'
+            -
+                label: System sans
+                value: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
+            -
+                label: Monospace
+                value: '"SF Mono", "JetBrains Mono", Menlo, Consolas, monospace'
+    -
+        id: km-font-size-sidebar
+        title: Sidebar font size
+        type: variable-select
+        default: '0.875rem'
+        options:
+            -
+                label: Small
+                value: '0.8125rem'
+            -
+                label: Default
+                value: '0.875rem'
+            -
+                label: Large
+                value: '1rem'
+    -
+        id: km-line-height
+        title: Line height
+        type: variable-number-slider
+        default: 1.65
+        min: 1.4
+        max: 2
+        step: 0.05
+    -
+        id: km-heading-workspace-controls
+        title: Workspace
+        type: heading
+        level: 2
+    -
+        id: km-sidebar-appearance
+        title: Sidebar appearance
+        type: class-select
+        default: km-sidebar-subtle
+        options:
+            -
+                label: Subtle
+                value: km-sidebar-subtle
+            -
+                label: Seamless
+                value: km-sidebar-seamless
+            -
+                label: Elevated
+                value: km-sidebar-elevated
+    -
+        id: km-tab-appearance
+        title: Tab appearance
+        type: class-select
+        default: km-tabs-default
+        options:
+            -
+                label: Default
+                value: km-tabs-default
+            -
+                label: Underlined
+                value: km-tabs-underlined
+    -
+        id: km-workspace-borders
+        title: Workspace borders
+        type: class-select
+        default: km-borders-default
+        options:
+            -
+                label: Default
+                value: km-borders-default
+            -
+                label: Hidden
+                value: km-borders-hidden
+            -
+                label: Strong
+                value: km-borders-strong
+    -
+        id: km-content-width-input
+        title: Content width
+        type: variable-select
+        default: '68ch'
+        options:
+            -
+                label: Narrow
+                value: '56ch'
+            -
+                label: Normal
+                value: '62ch'
+            -
+                label: Wide
+                value: '68ch'
+            -
+                label: Maximum
+                value: '76ch'
+            -
+                label: Full width
+                value: 'none'
+    -
+        id: km-compact
+        title: Compact appearance
+        description: Reduces vertical rhythm and padding across the interface.
+        type: class-toggle
+        default: false
+    -
+        id: km-heading-markdown-controls
+        title: Markdown
+        type: heading
+        level: 2
+    -
+        id: km-callout-style
+        title: Callout style
+        type: class-select
+        default: km-callout-soft
+        options:
+            -
+                label: Soft
+                value: km-callout-soft
+            -
+                label: Tinted
+                value: km-callout-tinted
+            -
+                label: Outlined
+                value: km-callout-outlined
+    -
+        id: km-checkbox-style
+        title: Checkbox style
+        type: class-select
+        default: km-checkbox-matcha
+        options:
+            -
+                label: Matcha
+                value: km-checkbox-matcha
+            -
+                label: Sage
+                value: km-checkbox-sage
+            -
+                label: Clay
+                value: km-checkbox-clay
+            -
+                label: Success green
+                value: km-checkbox-success
+    -
+        id: km-table-style
+        title: Table style
+        type: class-select
+        default: km-table-default
+        options:
+            -
+                label: Default
+                value: km-table-default
+            -
+                label: Striped
+                value: km-table-striped
+            -
+                label: Minimal
+                value: km-table-minimal
+    -
+        id: km-code-style
+        title: Code block style
+        type: class-select
+        default: km-code-default
+        options:
+            -
+                label: Default
+                value: km-code-default
+            -
+                label: Compact
+                value: km-code-compact
+            -
+                label: Flat
+                value: km-code-flat
+    -
+        id: km-link-underline
+        title: Underline links
+        type: class-toggle
+        default: false
+    -
+        id: km-heading-style
+        title: Heading style
+        type: class-select
+        default: km-headings-default
+        options:
+            -
+                label: Default
+                value: km-headings-default
+            -
+                label: Accent bar
+                value: km-headings-bar
+            -
+                label: Underlined
+                value: km-headings-underlined
+
+*/
+/* Accent intensity overrides */
+body.km-accent-subtle {
+  --km-matcha: #aab49a;
+}
+
+body.km-accent-subtle.theme-dark {
+  --km-matcha: #858f76;
+}
+
+body.km-accent-vivid {
+  --km-matcha: #5c664a;
+}
+
+body.km-accent-vivid.theme-dark {
+  --km-matcha: #c1ccac;
+}
+
+/* Sidebar appearance */
+body.km-sidebar-seamless .workspace-split.mod-left-split,
+body.km-sidebar-seamless .workspace-split.mod-right-split {
+  background-color: var(--km-bg);
+}
+
+body.km-sidebar-elevated .workspace-split.mod-left-split,
+body.km-sidebar-elevated .workspace-split.mod-right-split {
+  background-color: var(--km-elevated);
+}
+
+/* Tab appearance */
+body.km-tabs-underlined .workspace-tab-header.is-active {
+  box-shadow: inset 0 -2px 0 var(--km-focus);
+}
+
+/* Workspace borders */
+body.km-borders-hidden .workspace-split,
+body.km-borders-hidden .workspace-leaf-container,
+body.km-borders-hidden .workspace-tab-container {
+  border: 0;
+}
+
+body.km-borders-strong .workspace-split,
+body.km-borders-strong .workspace-leaf-container,
+body.km-borders-strong .workspace-tab-container {
+  border: 2px solid var(--km-border);
+}
+
+/* Compact appearance */
+body.km-compact .markdown-reading-view table th,
+body.km-compact .markdown-reading-view table td,
+body.km-compact .markdown-preview table th,
+body.km-compact .markdown-preview table td {
+  padding: var(--km-space-1) var(--km-space-2);
+}
+
+body.km-compact .markdown-reading-view .callout,
+body.km-compact .markdown-preview .callout {
+  padding: var(--km-space-2) var(--km-space-3);
+}
+
+body.km-compact .markdown-reading-view pre,
+body.km-compact .markdown-preview pre {
+  padding: var(--km-space-2);
+}
+
+/* Callout styles */
+body.km-callout-outlined .markdown-reading-view .callout,
+body.km-callout-outlined .markdown-preview .callout {
+  background-color: transparent;
+  border: 1px solid var(--km-border);
+  border-left: 2px solid var(--km-clay);
+}
+
+body.km-callout-tinted .markdown-reading-view .callout,
+body.km-callout-tinted .markdown-preview .callout {
+  background-color: var(--km-soft);
+}
+
+/* Checkbox styles */
+body.km-checkbox-sage .markdown-reading-view input[type=checkbox],
+body.km-checkbox-sage .markdown-preview input[type=checkbox] {
+  accent-color: var(--km-sage);
+}
+
+body.km-checkbox-clay .markdown-reading-view input[type=checkbox],
+body.km-checkbox-clay .markdown-preview input[type=checkbox] {
+  accent-color: var(--km-clay);
+}
+
+body.km-checkbox-success .markdown-reading-view input[type=checkbox],
+body.km-checkbox-success .markdown-preview input[type=checkbox] {
+  accent-color: var(--km-success);
+}
+
+/* Table styles */
+body.km-table-striped .markdown-reading-view tbody tr:nth-child(even),
+body.km-table-striped .markdown-preview tbody tr:nth-child(even) {
+  background-color: var(--km-soft);
+}
+
+body.km-table-minimal .markdown-reading-view th,
+body.km-table-minimal .markdown-reading-view td,
+body.km-table-minimal .markdown-preview th,
+body.km-table-minimal .markdown-preview td {
+  border: 0;
+  border-bottom: 1px solid var(--km-border);
+}
+
+body.km-table-minimal .markdown-reading-view th,
+body.km-table-minimal .markdown-preview th {
+  border-bottom: 1px solid var(--km-border-strong);
+}
+
+/* Code block styles */
+body.km-code-compact .markdown-reading-view pre,
+body.km-code-compact .markdown-preview pre {
+  padding: var(--km-space-2);
+  font-size: 0.9em;
+}
+
+body.km-code-flat .markdown-reading-view pre,
+body.km-code-flat .markdown-preview pre {
+  background-color: var(--km-bg);
+  border: 0;
+}
+
+/* Link underline */
+body.km-link-underline .markdown-reading-view a,
+body.km-link-underline .markdown-preview a {
+  text-decoration: underline;
+}
+
+/* Heading styles */
+body.km-headings-bar .markdown-reading-view h1,
+body.km-headings-bar .markdown-preview h1,
+body.km-headings-bar .markdown-reading-view h2,
+body.km-headings-bar .markdown-preview h2,
+body.km-headings-bar .markdown-reading-view h3,
+body.km-headings-bar .markdown-preview h3,
+body.km-headings-bar .markdown-reading-view h4,
+body.km-headings-bar .markdown-preview h4,
+body.km-headings-bar .markdown-reading-view h5,
+body.km-headings-bar .markdown-preview h5,
+body.km-headings-bar .markdown-reading-view h6,
+body.km-headings-bar .markdown-preview h6 {
+  border-left: 2px solid var(--km-matcha);
+  padding-left: 0.4em;
+}
+
+body.km-headings-underlined .markdown-reading-view h1,
+body.km-headings-underlined .markdown-preview h1,
+body.km-headings-underlined .markdown-reading-view h2,
+body.km-headings-underlined .markdown-preview h2,
+body.km-headings-underlined .markdown-reading-view h3,
+body.km-headings-underlined .markdown-preview h3,
+body.km-headings-underlined .markdown-reading-view h4,
+body.km-headings-underlined .markdown-preview h4,
+body.km-headings-underlined .markdown-reading-view h5,
+body.km-headings-underlined .markdown-preview h5,
+body.km-headings-underlined .markdown-reading-view h6,
+body.km-headings-underlined .markdown-preview h6 {
+  box-shadow: 0 1px 0 var(--km-border);
+}
+
 /*
  * Kanso Matcha — Plugin compatibility (core + community placeholders)
  *

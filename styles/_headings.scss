@@ -3,12 +3,13 @@
  *
  * Phase 5: heading hierarchy, font weights and spacing for Reading View,
  * Live Preview and Source Mode, using the semantic design tokens.
+ * Phase 7: heading font and heading color are Style Settings controls.
  */
 
 .markdown-reading-view h1,
 .markdown-preview h1 {
   font-size: var(--km-heading-1-size);
-  font-weight: 600;
+  font-weight: 700;
   margin: var(--km-space-5) 0 var(--km-space-4) 0;
   color: var(--km-fg);
 }
@@ -16,7 +17,7 @@
 .markdown-reading-view h2,
 .markdown-preview h2 {
   font-size: var(--km-heading-2-size);
-  font-weight: 600;
+  font-weight: 700;
   margin: var(--km-space-4) 0 var(--km-space-4) 0;
   color: var(--km-fg);
 }
@@ -24,7 +25,7 @@
 .markdown-reading-view h3,
 .markdown-preview h3 {
   font-size: var(--km-heading-3-size);
-  font-weight: 500;
+  font-weight: 700;
   margin: var(--km-space-4) 0 var(--km-space-3) 0;
   color: var(--km-fg);
 }
@@ -32,7 +33,7 @@
 .markdown-reading-view h4,
 .markdown-preview h4 {
   font-size: var(--km-heading-4-size);
-  font-weight: 500;
+  font-weight: 700;
   margin: var(--km-space-3) 0 var(--km-space-3) 0;
   color: var(--km-fg);
 }
@@ -40,7 +41,7 @@
 .markdown-reading-view h5,
 .markdown-preview h5 {
   font-size: var(--km-heading-5-size);
-  font-weight: 500;
+  font-weight: 600;
   margin: var(--km-space-3) 0 var(--km-space-3) 0;
   color: var(--km-fg);
 }
@@ -48,12 +49,24 @@
 .markdown-reading-view h6,
 .markdown-preview h6 {
   font-size: var(--km-heading-6-size);
-  font-weight: 500;
+  font-weight: 600;
   margin: var(--km-space-3) 0 var(--km-space-3) 0;
   color: var(--km-fg);
 }
 
-/* Inline title */
-.inline-title {
-  font-weight: 600;
+/* Heading family and color (Style Settings: km-font-heading / km-heading-color) */
+.markdown-reading-view h1,
+.markdown-preview h1,
+.markdown-reading-view h2,
+.markdown-preview h2,
+.markdown-reading-view h3,
+.markdown-preview h3,
+.markdown-reading-view h4,
+.markdown-preview h4,
+.markdown-reading-view h5,
+.markdown-preview h5,
+.markdown-reading-view h6,
+.markdown-preview h6 {
+  font-family: var(--km-font-heading);
+  color: var(--km-heading-color);
 }

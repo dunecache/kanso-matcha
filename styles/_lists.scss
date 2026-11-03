@@ -1,8 +1,7 @@
-/*
- * Kanso Matcha — Lists and checkboxes
- *
- * Phase 5: list markers, task checkboxes and completed task appearance.
- */
+// Kanso Matcha — Lists and checkboxes
+//
+// Phase 5: list markers, task checkboxes and completed task appearance.
+// Phase 7: checkbox accent is a Style Settings control (km-checkbox-style).
 
 .markdown-reading-view ul,
 .markdown-preview ul {
@@ -16,5 +15,5 @@
 
 .markdown-reading-view input[type="checkbox"],
 .markdown-preview input[type="checkbox"] {
-  accent-color: var(--km-success);
+  accent-color: var(--km-accent-strong);
 }
