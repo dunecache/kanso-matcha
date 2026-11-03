@@ -992,6 +992,15 @@ body {
   color: var(--km-fg);
 }
 
+/* Heading color (Style Settings: km-heading-color-light / km-heading-color-dark) */
+.theme-light {
+  --km-heading-color: var(--km-heading-color-light, #34382f);
+}
+
+.theme-dark {
+  --km-heading-color: var(--km-heading-color-dark, #e8e5d9);
+}
+
 /* Heading family and color (Style Settings: km-font-heading / km-heading-color) */
 .markdown-reading-view h1,
 .markdown-preview h1,
